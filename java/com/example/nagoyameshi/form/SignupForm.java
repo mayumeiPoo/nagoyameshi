@@ -23,6 +23,9 @@ public class SignupForm {
      @NotBlank(message = "電話番号を入力してください。")
      private String phoneNumber;
      
+     @NotBlank(message = "誕生月を選択してください。")
+     private String birthmonth;
+     
      @NotBlank(message = "誕生日を選択してください。")
      private String birthday;
      

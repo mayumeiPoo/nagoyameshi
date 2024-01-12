@@ -36,6 +36,9 @@ public class User {
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	
+	@Column(name = "birthmonth")
+	private String birthmonth;
+	
 	@Column(name = "birthday")
 	private String birthday;
 	

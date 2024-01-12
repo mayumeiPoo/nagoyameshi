@@ -32,6 +32,7 @@ public UserService(UserRepository userRepository,RoleRepository roleRepository,P
      user.setPostalCode(signupForm.getPostalCode());
      user.setAddress(signupForm.getAddress());
      user.setPhoneNumber(signupForm.getPhoneNumber());
+     user.setBirthmonth(signupForm.getBirthmonth());
      user.setBirthday(signupForm.getBirthday());
      user.setGender(signupForm.getGender());
      user.setEmail(signupForm.getEmail());

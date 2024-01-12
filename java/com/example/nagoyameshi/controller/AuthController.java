@@ -16,10 +16,11 @@ import com.example.nagoyameshi.service.UserService;
 @Controller
 public class AuthController {
 	private final UserService userService;
-	
-	public AuthController(UserService userService) {
-		this.userService = userService;
-	}
+	   
+    
+    public AuthController(UserService userService) {        
+        this.userService = userService;        
+    }    
 	
 	@GetMapping("/login")
 	public String login() {
@@ -35,7 +36,7 @@ public class AuthController {
 	 @PostMapping("/signup")
      public String signup(@ModelAttribute @Validated SignupForm signupForm, BindingResult bindingResult, RedirectAttributes redirectAttributes) {      
          if (userService.isEmailRegistered(signupForm.getEmail())) {
-             FieldError fieldError = new FieldError(bindingResult.getObjectName(), "email", "すでに登録されているメールアドレスです。");
+             FieldError fieldError = new FieldError(bindingResult.getObjectName(), "email", "すでに登録済みのメールアドレスです。");
              bindingResult.addError(fieldError);                       
          }    
          
@@ -52,6 +53,5 @@ public class AuthController {
          redirectAttributes.addFlashAttribute("successMessage", "会員登録が完了しました。");
  
          return "redirect:/";
-     }    
-
+     } 
 }
