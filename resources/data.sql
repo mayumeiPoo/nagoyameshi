@@ -19,7 +19,45 @@ INSERT IGNORE INTO user (id, name, furigana, postal_code, address, phone_number,
 
 
 --categoryテーブル
+INSERT IGNORE INTO category (id, name) VALUES (1, '定食');
+INSERT IGNORE INTO category (id, name) VALUES (2, '焼肉');
+INSERT IGNORE INTO category (id, name) VALUES (3, '寿司');
+INSERT IGNORE INTO category (id, name) VALUES (4, '手羽先');
+INSERT IGNORE INTO category (id, name) VALUES (5, '天ぷら');
+INSERT IGNORE INTO category (id, name) VALUES (6, 'ラーメン');
+INSERT IGNORE INTO category (id, name) VALUES (7, 'うどん');
+INSERT IGNORE INTO category (id, name) VALUES (8, '居酒屋');
+INSERT IGNORE INTO category (id, name) VALUES (9, 'イタリアン');
+INSERT IGNORE INTO category (id, name) VALUES (10, '喫茶店');
+INSERT IGNORE INTO category (id, name) VALUES (11, 'カフェ');
+INSERT IGNORE INTO category (id, name) VALUES (12, '焼き鳥');
+INSERT IGNORE INTO category (id, name) VALUES (13, '鉄板焼き');
+INSERT IGNORE INTO category (id, name) VALUES (14, 'スイーツ');
+INSERT IGNORE INTO category (id, name) VALUES (15, 'パン');
+
 --shopテーブル
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (1, 'ジェイスジ', 1, 'shop1.jpg', '名古屋の味をご堪能ください。', 1500, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '11:00', '21:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (2, 'シオウエンフィ', 1, 'shop1.jpg', '名古屋の味をご堪能ください。', 1800, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '12:00', '20:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (3, 'シヂジェヅ', 1, 'shop1.jpg', '名古屋の味をご堪能ください。', 1200, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '11:00', '20:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (4, 'フィフェル', 1, 'shop1.jpg', '名古屋の味をご堪能ください。', 1500, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '11:00', '21:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (5, 'ポポキキ', 1, 'shop1.jpg', '名古屋の味をご堪能ください。', 2000, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '11:00', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (6, 'ハウウジュハヨ', 2, 'shop2.jpg', '名古屋の味をご堪能ください。', 3000, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '11:00', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (7, 'カクカイ', 2, 'shop2.jpg', '名古屋の味をご堪能ください。', 4000, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '11:00', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (8, 'ケキサミ', 2, 'shop2.jpg', '名古屋の味をご堪能ください。', 5000, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '15:00', '23:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (9, 'オィチキ', 2, 'shop2.jpg', '名古屋の味をご堪能ください。', 3500, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '17:00', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (10, 'ジクアッキ', 2, 'shop2.jpg', '名古屋の味をご堪能ください。', 4500, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '17:30', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (11, 'ワカイジュ', 3, 'shop3.jpg', '名古屋の味をご堪能ください。', 5000, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '11:00', '21:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (12, 'スジヅツル', 3, 'shop3.jpg', '名古屋の味をご堪能ください。', 3000, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '12:00', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (13, 'カイエールキフ', 3, 'shop3.jpg', '名古屋の味をご堪能ください。', 3500, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '15:00', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (14, 'マモミカク', 3, 'shop3.jpg', '名古屋の味をご堪能ください。', 4000, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '17:00', '21:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (15, 'ズカキースハイ', 3, 'shop3.jpg', '名古屋の味をご堪能ください。', 1500, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '11:00', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (16, 'カイカイアオ', 4, 'shop4.jpg', '名古屋の味をご堪能ください。', 2000, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '18:00', '23:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (17, 'ウエウウエ', 4, 'shop4.jpg', '名古屋の味をご堪能ください。', 2500, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '16:00', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (18, 'カイケイヅエ', 4, 'shop4.jpg', '名古屋の味をご堪能ください。', 2100, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '15:00', '23:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (19, 'ィアウカキ', 4, 'shop4.jpg', '名古屋の味をご堪能ください。', 1400, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '18:00', '23:30');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (20, 'アキエルフーイ', 4, 'shop4.jpg', '名古屋の味をご堪能ください。', 1300, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '17:00', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (21, 'アイエルヤ', 5, 'shop5.jpg', '名古屋の味をご堪能ください。', 2000, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '11:00', '22:00');
+INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, time_start, time_end) VALUES (22, 'アルクエル', 5, 'shop5.jpg', '名古屋の味をご堪能ください。', 2300, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '11:30', '21:00');
 --favoriteテーブル
 --reviewテーブル
 --reservationテーブル
