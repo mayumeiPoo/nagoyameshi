@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+	<head>
+		<div th:replace="~{fragment :: meta}"></div>   
+              
+         <div th:replace="~{fragment :: styles}"></div>
+         <title>なごやめし</title>
+	</head>
+	<body>
+		<div class="nagoyameshi-wrapper">
+			<div th:replace="~{fragment :: header}"></div>
+			<main>
+				<div class="container pt-4 pb-5 nagoyameshi-container">
+					<div th:if="${param.loggedIn}" class="alert alert-warning">
+                         ログインしました。
+				</div>
+				<div th:if="${param.loggedOut}" class="alert alert-warning">
+					ログアウトしました。
+				</div>
+				<div th:if="${successMessage}" class="alert alert-warning">
+                         <span th:text="${successMessage}"></span>
+                     </div>  
+				</div>
+				<form method="get" th:action="@{/shop}" class="mb-2  nagoyameshi-search-form">
+                             <div class="input-group">
+                                 <input type="text" class="form-control" name="area" th:value="${area}" placeholder="最寄駅">
+                                 <select class="form-select" aria-label="Default select example" name="category" th:value="${category}" >
+									 <option value="" selected>カテゴリ</option>
+									 <option value="1" th:selected="${category == '定食'}">定食</option>
+									 <option value="2" th:selected="${category == '焼肉'}">焼肉</option>
+									 <option value="3" th:selected="${category == '寿司'}">寿司</option>
+									 <option value="4" th:selected="${category == '手羽先'}">手羽先</option>
+									 <option value="5" th:selected="${category == '天ぷら'}">天ぷら</option>
+									 <option value="6" th:selected="${category == 'ラーメン'}">ラーメン</option>
+									 <option value="7" th:selected="${category == 'うどん'}">うどん</option>
+									 <option value="8" th:selected="${category == '居酒屋'}">居酒屋</option>
+									 <option value="9" th:selected="${category == 'イタリアン'}">イタリアン</option>
+									 <option value="10" th:selected="${category == '喫茶店'}">喫茶店</option>
+									 <option value="11" th:selected="${category == 'カフェ'}">カフェ</option>
+									 <option value="12" th:selected="${category == '焼き鳥'}">焼き鳥</option>
+									 <option value="13" th:selected="${category == '鉄板焼き'}">鉄板焼き</option>
+									 <option value="14" th:selected="${category == 'スイーツ'}">スイーツ</option>
+									 <option value="15" th:selected="${category == 'パン'}">パン</option>
+                                 </select>
+                                 <select class="form-select" aria-label="Default select example" name="price" th:value="${price}">
+									 <option value="" selected>予算</option>
+									 <option value="2000" th:selected="${price == 2000}">~¥2000</option>
+									 <option value="3000" th:selected="${price == 3000}">~¥3000</option>
+									 <option value="4000" th:selected="${price == 4000}">~¥4000</option>
+									 <option value="5000" th:selected="${price == 5000}">~¥5000</option>
+									 <option value="6000" th:selected="${price == 6000}">~¥6000</option>
+									 <option value="7000" th:selected="${price == 7000}">~¥7000</option>
+									 <option value="8000" th:selected="${price == 8000}">~¥8000</option>
+									 <option value="9000" th:selected="${price == 9000}">~¥9000</option>
+									 <option value="10000" th:selected="${price == 10000}">~¥10000</option>
+									 <option value="11000" th:selected="${price == 11000}">~¥11000</option>
+									 <option value="12000" th:selected="${price == 12000}">~¥12000</option>
+									 <option value="13000" th:selected="${price == 13000}">~¥13000</option>
+									 <option value="14000" th:selected="${price == 14000}">~¥14000</option>
+									 <option value="15000" th:selected="${price == 15000}">~¥15000</option>
+                                 </select>
+                                  <select class="form-select" aria-label="Default select example" name="capacity" th:value="${capacity}">
+									 <option selected>人数</option>
+									 <option value="1" th:selected="${capacity == 1}">1名</option>
+									 <option value="2" th:selected="${capacity == 2}">2名</option>
+									 <option value="3" th:selected="${capacity == 3}">3名</option>
+									 <option value="4" th:selected="${capacity == 4}">4名</option>
+									 <option value="5" th:selected="${capacity == 5}">5名</option>
+									 <option value="6" th:selected="${capacity == 6}">6名</option>
+									 <option value="7" th:selected="${capacity == 7}">7名</option>
+									 <option value="8" th:selected="${capacity == 8}">8名</option>
+									 <option value="9" th:selected="${capacity == 9}">9名</option>
+									 <option value="10" th:selected="${capacity == 10}">10名</option>
+									 <option value="11" th:selected="${capacity == 11}">11名</option>
+									 <option value="12" th:selected="${capacity == 12}">12名</option>
+									 <option value="13" th:selected="${capacity == 13}">13名</option>
+									 <option value="14" th:selected="${capacity == 14}">14名</option>
+									 <option value="15" th:selected="${capacity == 15}">15名</option>
+                                 </select>
+                                 <button type="submit" class="btn text-white shadow-sm nagoyameshi-btn">検索</button> 
+                             </div>               
+                         </form>
+				
+　　　　　　　　　<div class="img-frame">
+               <!--  1枚目の画像  -->
+               <img class="img-01" th:src="@{/images/food1.jpg}" alt="味噌カツ">
+               <!--  2枚目の画像  -->
+               <img class="img-02" th:src="@{/images/food4.jpg}" alt="天むす">
+               <!--  3枚目の画像  -->
+               <img class="img-03" th:src="@{/images/food3.jpg}" alt="手羽先">
+　　　　　　　　　
+　　　　　　　　　</div>
+               </div>
+			</main>
+			<div th:replace="~{fragment :: footer}"></div>
+		</div>
+		<div th:replace="~{fragment :: scripts}"></div> 
+	</body>
+</html>

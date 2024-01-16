@@ -1,0 +1,142 @@
+html {
+   font-size: 14px;
+ }
+ 
+ body {
+   font-family: 'Noto Sans JP', sans-serif;  
+ }
+ 
+ h1 {
+   font-size: 1.7rem;
+ }
+ 
+ a {
+	 color: #a35214;
+	 text-decoration: none !important;
+ }
+ 
+p {
+	color: #77787b;
+}
+ 
+ a:hover{
+	 color: #94370f;
+ }
+ 
+ main {
+	 margin-left: 75px;
+	 margin-right: 75px;
+ }
+ 
+ .nagoyameshi-wrapper {
+   min-height: 100vh;
+   position: relative;
+   padding-bottom: 60px;
+   box-sizing: border-box;
+ }
+ footer {
+   width: 100%;
+   height: 60px;
+   position: absolute;
+   bottom: 0;    
+   background-color: #F0EEED;
+   
+   }
+   
+.nagoyameshi_description{
+	font-size: 17px;
+}
+ 
+ .nagoyameshi-navbar {
+   min-height: 60px;
+ }
+ 
+ .nagoyameshi-logo {
+	 
+	 margin-left: 100px;
+   height: 50px;
+   width: auto;   
+ }
+ 
+ .nagoyameshi-btn{
+	 background-color: #94736c !important;
+	 
+ }
+ 
+.nagoyameshi-page-link {
+	 color: #94736c ;
+}
+
+.nagoyameshi-page-link:hover {
+	color: #94736c ;
+	}
+.nagoyameshil-active {
+	background-color: #94736c !important ;
+	border-color: #94736c !important;
+}
+	
+.img-frame{
+   position: relative;
+   width: 70%;
+   height: 600px;
+   overflow: hidden;
+   margin: 0 auto;
+}
+
+
+.img-01, .img-02, .img-03{
+   position: absolute;
+   top:0;
+   left:0;
+   width: 100%;
+   height: 100%;
+   background-size: cover;
+   background-repeat: no-repeat;
+}
+.img-01{
+   animation: slide-animation-01 24s infinite;
+}
+.img-02{
+   animation: slide-animation-02 24s infinite;
+}
+.img-03{
+   animation: slide-animation-03 24s infinite;
+}
+@keyframes slide-animation-01 {
+    0% {opacity: 1; transform: scale(1.0);}
+  30% {opacity: 1;}
+  40% {opacity: 0; transform: scale(1.15);}
+  90% {opacity: 0}
+100% {opacity: 1; transform: scale(1.0);}
+}
+@keyframes slide-animation-02 {
+    0% {opacity: 0;}
+  30% {opacity: 0; transform: scale(1.1);}
+  40% {opacity: 1;}
+  60% {opacity: 1;}
+  70% {opacity: 0; transform: scale(1.0);}
+100% {opacity: 0;}
+}
+@keyframes slide-animation-03 {
+    0% {opacity: 0;}
+  60% {opacity: 0;  transform: scale(1.0);}
+  70% {opacity: 1;}
+  90% {opacity: 1;}
+100% {opacity: 0; transform: scale(1.1);}
+}
+
+
+.nagoyameshi-search-form {
+	width: 450px;
+	margin: 0 0 0 auto;
+ }
+ 
+ .nagoyameshi-sort-box {
+	 background-color: #F0EEED;
+	 width: 150px;
+ }
+ @media screen and (min-width: 1400ox){
+	.nagoyameshi-container{
+		max-width: 1200px;
+	}
+	}
