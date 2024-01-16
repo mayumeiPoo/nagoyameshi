@@ -15,8 +15,17 @@ html {
 	 text-decoration: none !important;
  }
  
+p {
+	color: #77787b;
+}
+ 
  a:hover{
 	 color: #94370f;
+ }
+ 
+ main {
+	 margin-left: 75px;
+	 margin-right: 75px;
  }
  
  .nagoyameshi-wrapper {
@@ -34,7 +43,9 @@ html {
    
    }
    
-
+.nagoyameshi_description{
+	font-size: 17px;
+}
  
  .nagoyameshi-navbar {
    min-height: 60px;
@@ -51,6 +62,19 @@ html {
 	 background-color: #94736c !important;
 	 
  }
+ 
+.nagoyameshi-page-link {
+	 color: #94736c ;
+}
+
+.nagoyameshi-page-link:hover {
+	color: #94736c ;
+	}
+.nagoyameshil-active {
+	background-color: #94736c !important ;
+	border-color: #94736c !important;
+}
+	
 .img-frame{
    position: relative;
    width: 70%;
@@ -100,9 +124,16 @@ html {
   90% {opacity: 1;}
 100% {opacity: 0; transform: scale(1.1);}
 }
+
+
 .nagoyameshi-search-form {
-     margin-right: 120px;
-     width: 500px;
+	width: 450px;
+	margin: 0 0 0 auto;
+ }
+ 
+ .nagoyameshi-sort-box {
+	 background-color: #F0EEED;
+	 width: 150px;
  }
  @media screen and (min-width: 1400ox){
 	.nagoyameshi-container{

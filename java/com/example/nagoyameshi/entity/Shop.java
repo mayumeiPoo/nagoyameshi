@@ -48,8 +48,17 @@ public class Shop {
     @Column(name = "phone_number")
     private String phoneNumber;
     
+    @Column(name = "station")
+    private String station;
+    
+    @Column(name = "capacity")
+    private Integer capacity;
+    
     @Column(name = "time_start")
     private Time timeStart;
+    
+    @Column(name = "time_end")
+    private Time timeEnd;
     
     @Column(name = "created_at", insertable = false, updatable = false)
     private Timestamp createdAt;
