@@ -24,23 +24,23 @@
 				<form method="get" th:action="@{/shop}" class="mb-2  nagoyameshi-search-form">
                              <div class="input-group">
                                  <input type="text" class="form-control" name="area" th:value="${area}" placeholder="最寄駅">
-                                 <select class="form-select" aria-label="Default select example" name="category" th:value="${category}" >
+                                 <select class="form-select" aria-label="Default select example" name="category_id" th:value="${category_id}" >
 									 <option value="" selected>カテゴリ</option>
-									 <option value="1" th:selected="${category == '定食'}">定食</option>
-									 <option value="2" th:selected="${category == '焼肉'}">焼肉</option>
-									 <option value="3" th:selected="${category == '寿司'}">寿司</option>
-									 <option value="4" th:selected="${category == '手羽先'}">手羽先</option>
-									 <option value="5" th:selected="${category == '天ぷら'}">天ぷら</option>
-									 <option value="6" th:selected="${category == 'ラーメン'}">ラーメン</option>
-									 <option value="7" th:selected="${category == 'うどん'}">うどん</option>
-									 <option value="8" th:selected="${category == '居酒屋'}">居酒屋</option>
-									 <option value="9" th:selected="${category == 'イタリアン'}">イタリアン</option>
-									 <option value="10" th:selected="${category == '喫茶店'}">喫茶店</option>
-									 <option value="11" th:selected="${category == 'カフェ'}">カフェ</option>
-									 <option value="12" th:selected="${category == '焼き鳥'}">焼き鳥</option>
-									 <option value="13" th:selected="${category == '鉄板焼き'}">鉄板焼き</option>
-									 <option value="14" th:selected="${category == 'スイーツ'}">スイーツ</option>
-									 <option value="15" th:selected="${category == 'パン'}">パン</option>
+									 <option value="1" th:selected="${category_id == 1}">定食</option>
+									 <option value="2" th:selected="${category_id == 2}">焼肉</option>
+									 <option value="3" th:selected="${category_id == 3}">寿司</option>
+									 <option value="4" th:selected="${category_id == 4}">手羽先</option>
+									 <option value="5" th:selected="${category_id == 5}">天ぷら</option>
+									 <option value="6" th:selected="${category_id == 6}">ラーメン</option>
+									 <option value="7" th:selected="${category_id == 7}">うどん</option>
+									 <option value="8" th:selected="${category_id == 8}">居酒屋</option>
+									 <option value="9" th:selected="${category_id == 9}">イタリアン</option>
+									 <option value="10" th:selected="${category_id == 10}">喫茶店</option>
+									 <option value="11" th:selected="${category_id == 11}">カフェ</option>
+									 <option value="12" th:selected="${category_id == 12}">焼き鳥</option>
+									 <option value="13" th:selected="${category_id == 13}">鉄板焼き</option>
+									 <option value="14" th:selected="${category_id == 14}">スイーツ</option>
+									 <option value="15" th:selected="${category_id == 15}">パン</option>
                                  </select>
                                  <select class="form-select" aria-label="Default select example" name="price" th:value="${price}">
 									 <option value="" selected>予算</option>
@@ -60,7 +60,7 @@
 									 <option value="15000" th:selected="${price == 15000}">~¥15000</option>
                                  </select>
                                   <select class="form-select" aria-label="Default select example" name="capacity" th:value="${capacity}">
-									 <option selected>人数</option>
+									 <option value="" selected >人数</option>
 									 <option value="1" th:selected="${capacity == 1}">1名</option>
 									 <option value="2" th:selected="${capacity == 2}">2名</option>
 									 <option value="3" th:selected="${capacity == 3}">3名</option>

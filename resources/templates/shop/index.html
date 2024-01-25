@@ -20,23 +20,23 @@
                              <form method="get" th:action="@{/shop}" class="mb-2  nagoyameshi-search-form">
                              <div class="input-group">
                                  <input type="text" class="form-control" name="area" th:value="${area}" placeholder="最寄駅">
-                                 <select class="form-select" aria-label="Default select example" name="category" th:value="${category}" >
+                                 <select class="form-select" aria-label="Default select example" name="category_id" th:value="${category_id}" >
 									 <option value="" selected>カテゴリ</option>
-									 <option value="1" th:selected="${category == '定食'}">定食</option>
-									 <option value="2" th:selected="${category == '焼肉'}">焼肉</option>
-									 <option value="3" th:selected="${category == '寿司'}">寿司</option>
-									 <option value="4" th:selected="${category == '手羽先'}">手羽先</option>
-									 <option value="5" th:selected="${category == '天ぷら'}">天ぷら</option>
-									 <option value="6" th:selected="${category == 'ラーメン'}">ラーメン</option>
-									 <option value="7" th:selected="${category == 'うどん'}">うどん</option>
-									 <option value="8" th:selected="${category == '居酒屋'}">居酒屋</option>
-									 <option value="9" th:selected="${category == 'イタリアン'}">イタリアン</option>
-									 <option value="10" th:selected="${category == '喫茶店'}">喫茶店</option>
-									 <option value="11" th:selected="${category == 'カフェ'}">カフェ</option>
-									 <option value="12" th:selected="${category == '焼き鳥'}">焼き鳥</option>
-									 <option value="13" th:selected="${category == '鉄板焼き'}">鉄板焼き</option>
-									 <option value="14" th:selected="${category == 'スイーツ'}">スイーツ</option>
-									 <option value="15" th:selected="${category == 'パン'}">パン</option>
+									 <option value="1" th:selected="${category_id == 1}">定食</option>
+									 <option value="2" th:selected="${category_id == 2}">焼肉</option>
+									 <option value="3" th:selected="${category_id == 3}">寿司</option>
+									 <option value="4" th:selected="${category_id == 4}">手羽先</option>
+									 <option value="5" th:selected="${category_id == 5}">天ぷら</option>
+									 <option value="6" th:selected="${category_id == 6}">ラーメン</option>
+									 <option value="7" th:selected="${category_id == 7}">うどん</option>
+									 <option value="8" th:selected="${category_id == 8}">居酒屋</option>
+									 <option value="9" th:selected="${category_id == 9}">イタリアン</option>
+									 <option value="10" th:selected="${category_id == 10}">喫茶店</option>
+									 <option value="11" th:selected="${category_id == 11}">カフェ</option>
+									 <option value="12" th:selected="${category_id == 12}">焼き鳥</option>
+									 <option value="13" th:selected="${category_id == 13}">鉄板焼き</option>
+									 <option value="14" th:selected="${category_id == 14}">スイーツ</option>
+									 <option value="15" th:selected="${category_id == 15}">パン</option>
                                  </select>
                                  <select class="form-select" aria-label="Default select example" name="price" th:value="${price}">
 									 <option value="" selected>予算</option>
@@ -85,7 +85,7 @@
                                  
                                  <form method="get" th:action="@{/shop}" class="mb-3 nagoyameshi-sort-box"> 
                                      <input th:if="${area}" type="hidden" name="area" th:value="${area}">
-                                     <input th:if="${category}" type="hidden" name="category" th:value="${category}">
+                                     <input th:if="${category_id}" type="hidden" name="category_id" th:value="${category_id}">
                                      <input th:if="${price}" type="hidden" name="price" th:value="${price}"> 
                                      <input th:if="${capacity}" type="hidden" name="capacity" th:value="${capacity}">                                     
                                      <select class="form-select form-select-sm nagoyameshi-sort-box" name="order" onChange="this.form.submit();">
@@ -110,7 +110,7 @@
                                                  <div class="card-body">
 													                                 
                                                      <h3 class="card-title mb-3" th:text="${shop.getName()}"></h3>
-                                                     <span class="text-body" th:text="${shop.getStation()} + '/' + ${shop.getCategory()}"></span>
+                                                     <span class="text-body" th:text="${shop.getStation()} + '&nbsp;/&nbsp;' + ${shop.getCategory().getName()}"></span>
                                                                                                  
   
                                                      <hr class="mb-3">
@@ -126,7 +126,7 @@
                                                      </p>   
                                                                                                                                                                                                                                     
                                                      <p class="card-text">
-                                                         <span class="text-body" th:text="'¥' + ${#numbers.formatInteger(shop.getPrice(), 1, 'COMMA') + '〜'}"></span>
+                                                         <span class="text-body" th:text="'¥' + ${#numbers.formatInteger(shop.getPrice(), 1, 'COMMA')}"></span>
                                                      </p>
                                                      <p class="card-text">
 														 <span class="text-body" th:text="${shop.getTimeStart()} + '〜' + ${shop.getTimeEnd()}"></span>
@@ -147,7 +147,7 @@
 											 <a th:unless="${shopPage.isFirst()}" th:href="@{/shop(page = ${shopPage.getNumber() - 1}, area = ${area}, category = ${category}, price = ${price}, capacity = ${capacity}, order = ${order})}" class="page-link nagoyameshi-page-link">前</a>
 										 </li>
 										 <li th:each="i : ${#numbers.sequence(0, shopPage.getTotalPages() - 1)}" class="page-item">
-											  <span th:if="${i == shopPage.getNumber()}" class="page-link active nagoyameshil-active" th:text="${i + 1}"></span>
+											  <span th:if="${i == shopPage.getNumber()}" class="page-link active nagoyameshi-active" th:text="${i + 1}"></span>
                                              <a th:unless="${i == shopPage.getNumber()}" th:href="@{/shop(page = ${i}, area = ${area}, category = ${category}, price = ${price}, capacity = ${capacity}, order = ${order})}" class="page-link nagoyameshi-page-link" th:text="${i + 1}"></a>
 										 </li>
 										 <li class="page-item">

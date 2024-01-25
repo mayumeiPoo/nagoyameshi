@@ -61,7 +61,19 @@ INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, 
 --favoriteテーブル
 --reviewテーブル
 --reservationテーブル
-
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (1, 1, 1, 2, '2024-02-02', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (2, 2, 1, 2, '2024-02-04', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (3, 3, 1, 2, '2024-02-06', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (4, 4, 1, 2, '2024-02-08', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (5, 5, 1, 2, '2024-02-10', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (6, 6, 1, 2, '2024-02-12', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (7, 7, 1, 2, '2024-02-14', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (8, 8, 1, 2, '2024-02-16', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (9, 9, 1, 2, '2024-02-18', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (10, 10, 1, 2, '2024-02-20', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (11, 11, 1, 2, '2024-02-22', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (12, 12, 1, 2, '2024-02-24', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (13, 13, 1, 2, '2024-02-26', '19:00');
 
 
 
