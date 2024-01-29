@@ -59,7 +59,30 @@ INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, 
 INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, station, capacity, time_start, time_end) VALUES (21, 'アイエルヤ', 5, 'shop5.jpg', '名古屋の味をご堪能ください。', 2000, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '国際センター', 4, '11:00', '22:00');
 INSERT IGNORE INTO shop (id, name, category_id, image_name, description, price, postal_code, address, phone_number, station, capacity, time_start, time_end) VALUES (22, 'アルクエル', 5, 'shop5.jpg', '名古屋の味をご堪能ください。', 2300, '〒460-0008', '愛知県名古屋市中区栄2-17-1', '052-111-0000', '伏見', 4, '11:30', '21:00');
 --favoriteテーブル
+INSERT IGNORE INTO favorite (id, shop_id, user_id) VALUES (1, 1, 1);
+INSERT IGNORE INTO favorite (id, shop_id, user_id) VALUES (2, 2, 1);
+INSERT IGNORE INTO favorite (id, shop_id, user_id) VALUES (3, 3, 1);
+INSERT IGNORE INTO favorite (id, shop_id, user_id) VALUES (4, 4, 1);
+INSERT IGNORE INTO favorite (id, shop_id, user_id) VALUES (5, 5, 1);
+
 --reviewテーブル
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (1, 1, 1, 4, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (2, 1, 2, 5, '最高に美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (3, 1, 3, 4, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (4, 1, 4, 3, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (5, 1, 5, 5, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (6, 1, 6, 2, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (7, 1, 7, 4, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (8, 1, 8, 4, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (9, 1, 9, 3, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (10, 1, 10, 4, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (11, 1, 11, 5, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (12, 2, 1, 5, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (13, 3, 1, 5, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (14, 4, 1, 5, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (15, 5, 1, 5, '美味しかったです。');
+INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (16, 6, 1, 5, '美味しかったです。');
+
 --reservationテーブル
 INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (1, 1, 1, 2, '2024-02-02', '19:00');
 INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (2, 2, 1, 2, '2024-02-04', '19:00');
@@ -74,6 +97,8 @@ INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservat
 INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (11, 11, 1, 2, '2024-02-22', '19:00');
 INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (12, 12, 1, 2, '2024-02-24', '19:00');
 INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (13, 13, 1, 2, '2024-02-26', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (13, 13, 1, 2, '2024-01-19', '19:00');
+INSERT IGNORE INTO reservation (id, shop_id, user_id, number_of_people, reservation_date, reservation_time) VALUES (13, 13, 1, 2, '2024-01-22', '19:00');
 
 
 

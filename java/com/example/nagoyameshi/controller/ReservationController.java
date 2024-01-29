@@ -1,6 +1,7 @@
 package com.example.nagoyameshi.controller;
 
  import java.time.LocalDate;
+import java.time.LocalTime;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +16,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.nagoyameshi.entity.Reservation;
@@ -31,7 +33,8 @@ import com.example.nagoyameshi.service.ReservationService;
 public class ReservationController {
      private final ReservationRepository reservationRepository;
      private final ShopRepository shopRepository;
-     private final ReservationService reservationService; 
+     private final ReservationService reservationService;
+     
      
      public ReservationController(ReservationRepository reservationRepository,ShopRepository shopRepository,ReservationService reservationService) {        
          this.reservationRepository = reservationRepository;
@@ -48,15 +51,18 @@ public class ReservationController {
          
          return "reservation/index";
      }
-     @GetMapping("/shop/{Id}/reservation")
-     public String create(@PathVariable(name = "shopId") Integer shopId, Model model) {
-         Shop shop = shopRepository.getReferenceById(shopId);
+     
+     
+     @GetMapping("/shop/{id}/reservation/createform")
+     public String inputform(@PathVariable(name = "id") Integer id, Model model) {
+         Shop shop = shopRepository.getReferenceById(id);
          model.addAttribute("shop", shop);  
          model.addAttribute("reservationInputForm", new ReservationInputForm());
          
-         return "reservation/create";
+         return "reservation/createform";
      
-}
+     }
+ 	
      @GetMapping("/shop/{id}/reservation/input")
      public String input(@PathVariable(name = "id") Integer id,
                          @ModelAttribute @Validated ReservationInputForm reservationInputForm,
@@ -68,6 +74,9 @@ public class ReservationController {
          Integer numberOfPeople = reservationInputForm.getNumberOfPeople();   
          Integer capacity = shop.getCapacity();
          
+         
+         
+         
          if (numberOfPeople != null) {
              if (!reservationService.isWithinCapacity(numberOfPeople, capacity)) {
                  FieldError fieldError = new FieldError(bindingResult.getObjectName(), "numberOfPeople", "予約人数が定員を超えています。");
@@ -75,11 +84,13 @@ public class ReservationController {
              }            
          }         
          
+         
          if (bindingResult.hasErrors()) {            
              model.addAttribute("shop",shop );            
              model.addAttribute("errorMessage", "予約内容に不備があります。"); 
-             return "reservation/create";
+             return "reservation/createform";
          }
+         
          
          redirectAttributes.addFlashAttribute("reservationInputForm", reservationInputForm);           
          
@@ -97,15 +108,24 @@ public class ReservationController {
                  
         
          LocalDate reservationDate = reservationInputForm.getReservationDate();
+         LocalTime reservationTime = reservationInputForm.getReservationTime();
+        
   
          
          
-         ReservationRegisterForm reservationRegisterForm = new ReservationRegisterForm(shop.getId(), user.getId(), reservationDate.toString(),reservationInputForm.getNumberOfPeople());
+         ReservationRegisterForm reservationRegisterForm = new ReservationRegisterForm(shop.getId(), user.getId(), reservationDate.toString(), reservationTime.toString(), reservationInputForm.getNumberOfPeople());
+
          
          model.addAttribute("shop", shop);  
          model.addAttribute("reservationRegisterForm", reservationRegisterForm);       
          
          return "reservation/confirm";
+     }
+     @PostMapping("/shop/{id}/reservation/create")
+     public String create(@ModelAttribute ReservationRegisterForm reservationRegisterForm) {                
+         reservationService.create(reservationRegisterForm);        
+         
+         return "redirect:/reservation?reserved";
      }
 
 }
