@@ -64,6 +64,7 @@ INSERT IGNORE INTO favorite (id, shop_id, user_id) VALUES (2, 2, 1);
 INSERT IGNORE INTO favorite (id, shop_id, user_id) VALUES (3, 3, 1);
 INSERT IGNORE INTO favorite (id, shop_id, user_id) VALUES (4, 4, 1);
 INSERT IGNORE INTO favorite (id, shop_id, user_id) VALUES (5, 5, 1);
+INSERT IGNORE INTO favorite (id, shop_id, user_id) VALUES (6, 6, 1);
 
 --reviewテーブル
 INSERT IGNORE INTO review (id, shop_id, user_id, evaluation, comments) VALUES (1, 1, 1, 4, '美味しかったです。');

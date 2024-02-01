@@ -149,6 +149,19 @@ p {
 	 text-align: center;
  }
  
+ .nagoyameshi-star{
+	 color: darkorange;
+ }
+ 
+ .nagoyameshi-link-danger{
+	 
+	 color: red;
+ }
+ 
+ .nagoyameshi-btn-danger{
+	 background-color: red !important;
+ }
+ 
  @media screen and (min-width: 1400ox){
 	.nagoyameshi-container{
 		max-width: 1200px;
