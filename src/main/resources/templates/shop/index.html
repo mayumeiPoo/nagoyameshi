@@ -129,7 +129,7 @@
                                                          <span class="text-body" th:text="'¥' + ${#numbers.formatInteger(shop.getPrice(), 1, 'COMMA')}"></span>
                                                      </p>
                                                      <p class="card-text">
-														 <span class="text-body" th:text="${shop.getTimeStart()} + '〜' + ${shop.getTimeEnd()}"></span>
+														 <span class="text-body" th:text="${#dates.format(shop.getTimeStart(),'HH:mm')} + '〜' + ${#dates.format(shop.getTimeEnd(),'HH:mm')}"></span>
 													 </p> 
                                                                                      
                                                  </div>
@@ -165,3 +165,4 @@
          <div th:replace="~{fragment :: scripts}"></div> 
 		</div>
 	</body>
+</html>
