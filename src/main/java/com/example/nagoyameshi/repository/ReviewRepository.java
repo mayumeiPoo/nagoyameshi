@@ -12,10 +12,13 @@ import com.example.nagoyameshi.entity.User;
 
 public interface ReviewRepository extends JpaRepository<Review,Integer>{
 	public Review findByShopAndUser(Shop shop,User user);
-	public List<Review> findTop8ByShopOrderByCreatedAtDesc(Shop shop);
-	public long countByShop(Shop shop);
+
 	public Page<Review> findByShopOrderByCreatedAtDesc(Shop shop, Pageable pageable);
 	public Page<Review> findByShopOrderByEvaluationDesc(Shop shop, Pageable pageable);
+
+	
+	
+    public List<Review> findByShopOrderByCreatedAtDesc(Shop shop);
 	
 
 }

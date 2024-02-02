@@ -162,6 +162,8 @@ p {
 	 background-color: red !important;
  }
  
+ 
+ 
  @media screen and (min-width: 1400ox){
 	.nagoyameshi-container{
 		max-width: 1200px;

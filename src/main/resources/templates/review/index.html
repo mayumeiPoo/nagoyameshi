@@ -45,7 +45,7 @@
 								 </li>
 							 </ul>
                             <br>
-                            <form method="get" th:action="@{/review}" class="mb-3 nagoyameshi-sort-box">
+                            <form method="get" th:action="@{/shop/__${shop.getId}__/review}" class="mb-3 nagoyameshi-sort-box">
 								 <select class="form-select form-select-sm" name="order" onChange="this.form.submit();">
                                 <option value="createdAtDesc" th:selected="${order == null}">新着順</option>                                           
                                 <option value="evaluationDesc" th:selected="${order == 'evaluationDesc'}">評価が高い順</option>
@@ -56,7 +56,7 @@
 							</div>
 							
                             
-                             <div  th:unless="${#lists.isEmpty(newReviews)}" class="row row-cols-1 row-cols-md-2 g-4 mb-4">
+                             <div  th:unless="${#lists.isEmpty(newReview)}" class="row row-cols-1 row-cols-md-2 g-4 mb-4">
 								 <div th:each="review : ${reviewPage}">
 									   <div class="col">
 										   <div class="card">
@@ -106,7 +106,7 @@
 									 </div>
 								 </div>
 								 <!-- ページネーション -->
-                             <div th:if="${shopPage.getTotalPages() > 1}" class="d-flex justify-content-center">
+                             <div th:if="${reviewPage.getTotalPages() > 1}" class="d-flex justify-content-center">
 								 <nav aria-label="レビュー一覧ページ">
 									 <ul class="pagination">
 										 <li class="page-item">

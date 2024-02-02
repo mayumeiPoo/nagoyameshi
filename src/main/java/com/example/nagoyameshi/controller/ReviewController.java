@@ -42,38 +42,34 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
     @GetMapping 
-    public String index(@RequestParam(name = "order", required = false) String order, @PathVariable(name = "shopId") Integer shopId, @PageableDefault(page = 0, size = 8, sort = "id", direction = Direction.ASC) Pageable pageable, Model model) {		
+    public String index(@RequestParam(name = "order", required = false) String order, @PathVariable(name = "shopId") Integer shopId, @AuthenticationPrincipal UserDetailsImpl userDetailsImpl,@PageableDefault(page = 0, size = 8, sort = "id", direction = Direction.ASC) Pageable pageable, Model model) {		
         
         
         	Shop shop = shopRepository.getReferenceById(shopId);
+        	boolean hasUserAlreadyReviewed = false;
+ 	        if (userDetailsImpl != null) {
+ 	        	User user = userDetailsImpl.getUser();
+ 	    	 	hasUserAlreadyReviewed = reviewService.hasUserAlreadyReviewed(shop, user);
+ 	        }
         	 Page<Review> reviewPage;
         	 if (order != null && order.equals ("evaluationDesc")) {
         		 reviewPage = reviewRepository.findByShopOrderByEvaluationDesc(shop,pageable);
         	 } else {
         		 reviewPage = reviewRepository.findByShopOrderByCreatedAtDesc(shop, pageable);
         	 }
-        	
+        	 List<Review> newReview = reviewRepository.findByShopOrderByCreatedAtDesc(shop);
+        	 
+        	 
+        	 
         model.addAttribute("shop", shop);
         model.addAttribute("reviewPage", reviewPage);
         model.addAttribute("order", order);
+        model.addAttribute("newReview", newReview);
+        model.addAttribute("hasUserAlreadyReviewed", hasUserAlreadyReviewed);
         return "review/index";
     }
   
         
-    	public String show(@PathVariable(name = "shopId") Integer shopId, Model model,@AuthenticationPrincipal UserDetailsImpl userDetailsImpl) {
-    		 Shop shop = shopRepository.getReferenceById(shopId);
-    		 boolean hasUserAlreadyReviewed = false;
-    	        if (userDetailsImpl != null) {
-    	        	User user = userDetailsImpl.getUser();
-    	    	 	hasUserAlreadyReviewed = reviewService.hasUserAlreadyReviewed(shop, user);
-    	        }
-    	        List<Review> newReview = reviewRepository.findTop8ByShopOrderByCreatedAtDesc(shop);
-    	        model.addAttribute("shop", shop);
-    	        model.addAttribute("hasUserAlreadyReviewed", hasUserAlreadyReviewed);
-    	        model.addAttribute("newReview", newReview);
-    	        return "review/index";
-        	 
-    	}
     
     
     @GetMapping("/register")
