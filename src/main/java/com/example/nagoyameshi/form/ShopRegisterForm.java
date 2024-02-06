@@ -43,10 +43,10 @@ public class ShopRegisterForm {
     @NotBlank(message = "最寄駅を入力してください。")
     private String station;
     
-    @NotNull(message = "開店時間を選択してください。")
+    
     private Time timeStart;
     
-    @NotNull(message = "閉店時間を選択してください。")
+    
     private Time timeEnd;
     
     @NotNull(message = "カテゴリを選択してください。")
