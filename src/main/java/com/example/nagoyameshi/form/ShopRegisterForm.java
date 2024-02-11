@@ -1,6 +1,6 @@
 package com.example.nagoyameshi.form;
 
-import java.sql.Time;
+import java.time.LocalTime;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -44,14 +44,25 @@ public class ShopRegisterForm {
     private String station;
     
     
-    private Time timeStart;
+    private String fromTimeStart;
     
     
-    private Time timeEnd;
+    private String fromTimeEnd;
     
     @NotNull(message = "カテゴリを選択してください。")
     @ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
-
+    
+    public LocalTime getTimeStart() {
+        String timeStart = getFromTimeStart();
+        return LocalTime.parse(timeStart);
+    }
+    
+    public LocalTime getTimeEnd() {
+        String timeEnd = getFromTimeEnd();
+        return LocalTime.parse(timeEnd);
+    }
+    
+   
 }

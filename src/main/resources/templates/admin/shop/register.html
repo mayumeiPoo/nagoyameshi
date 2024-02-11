@@ -21,7 +21,7 @@
                                 
                                 </ol>
                             </nav>
-                            <form method="post" th:action="@{/admin/shop/create}" th:object="${shopRegisterForm}" enctype="multipart/form-data">                                                            
+                            <form method="post" th:action="@{/admin/shop/create}" th:object="${shopInputForm}" enctype="multipart/form-data">                                                            
                                  <div class="form-group row mb-3">
                                      <div class="col-md-4">
                                          <label for="name" class="col-form-label text-md-left fw-bold">店舗名</label>
@@ -119,7 +119,7 @@
                                      </div>
                                      <div class="col-md-8">
                                          
-                                          <input type="time" class="form-control" step="900" list="data-list" th:field="*{timeStart}">                               
+                                          <input type="time" class="form-control" step="900" list="data-list" th:field="*{fromTimeStart}">                               
                                      </div>
                                  </div>
                                  <div class="form-group row mb-3">
@@ -128,7 +128,7 @@
                                      </div>
                                      <div class="col-md-8">
                                          
-                                          <input type="time" class="form-control" step="900" list="data-list" th:field="*{timeEnd}">                                
+                                          <input type="time" class="form-control" step="900" list="data-list" th:field="*{fromTimeEnd}">                                
                                      </div>
                                  </div>
                                   <div class="form-group row mb-3">
