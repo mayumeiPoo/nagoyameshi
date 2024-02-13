@@ -1,7 +1,6 @@
 package com.example.nagoyameshi.form;
 
 import java.sql.Time;
-import java.time.LocalTime;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -50,10 +49,10 @@ public class ShopEditForm {
      @NotBlank(message = "最寄駅を入力してください。")
      private String station;
      
-     private LocalTime timeStart;
+     private Time timeStart;
      
      
-     private LocalTime timeEnd;
+     private Time timeEnd;
      
      @NotNull(message = "カテゴリを選択してください。")
      @ManyToOne
