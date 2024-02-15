@@ -39,6 +39,7 @@ public UserService(UserRepository userRepository,RoleRepository roleRepository,P
      user.setEmail(signupForm.getEmail());
      user.setPassword(passwordEncoder.encode(signupForm.getPassword()));
      user.setRole(role);
+     user.setUpgrade(0);
      user.setEnabled(true);
      
      return userRepository.save(user);
@@ -53,7 +54,8 @@ public UserService(UserRepository userRepository,RoleRepository roleRepository,P
      user.setPostalCode(userEditForm.getPostalCode());
      user.setAddress(userEditForm.getAddress());
      user.setPhoneNumber(userEditForm.getPhoneNumber());
-     user.setEmail(userEditForm.getEmail());      
+     user.setEmail(userEditForm.getEmail());
+     user.setUpgrade(1);
      
      userRepository.save(user);
  }

@@ -55,6 +55,8 @@ public class User {
 	@JoinColumn(name = "role_id")
 	private Role role;
 	
+	@Column(name = "upgrade")
+	private Integer upgrade;
 	
 	@Column(name = "enabled")
     private Boolean enabled;

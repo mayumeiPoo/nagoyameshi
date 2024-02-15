@@ -10,17 +10,30 @@
 		<div class="nagoyameshi-wrapper">
 			<div th:replace="~{fragment :: header}"></div>
 			<main>
-				<div class="container samuraitravel-container pb-5">
+				<div class="container nagoyameshi-container pb-5">
                      <div class="row justify-content-center">
                          <nav class="my-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                              <ol class="breadcrumb mb-0">                        
                                  <li class="breadcrumb-item"><a th:href="@{/}">ホーム</a></li>
                                  <li class="breadcrumb-item active" aria-current="page">店舗一覧</li>
                              </ol>
-                             <form method="get" th:action="@{/shop}" class="mb-2  nagoyameshi-search-form">
-                             <div class="input-group">
-                                 <input type="text" class="form-control" name="area" th:value="${area}" placeholder="最寄駅">
-                                 <select class="form-select" aria-label="Default select example" name="category_id" th:value="${category_id}" >
+                         </nav>
+                         <div class="col-xl-3 col-lg-4 col-md-12"> 
+                             <form method="get" th:action="@{/shop}" class="w-100 mb-3">
+                                 <div class="input-group">
+                                     <input type="text" class="form-control" name="area" th:value="${area}" placeholder="最寄駅">
+                                     <button type="submit" class="btn text-white shadow-sm nagoyameshi-btn">検索</button> 
+                                 </div>
+                                                
+                             </form>
+                             <div class="card mb-3">
+                                 <div class="card-header">
+                                     カテゴリーから探す
+                                 </div>
+                                 <div class="card-body">
+                                     <form method="get" th:action="@{/shop}" class="w-100">
+                                         <div class="form-group mb-3">
+                                             <select class="form-select" aria-label="Default select example" name="category_id" th:value="${category_id}" >
 									 <option value="" selected>カテゴリ</option>
 									 <option value="1" th:selected="${category_id == 1}">定食</option>
 									 <option value="2" th:selected="${category_id == 2}">焼肉</option>
@@ -38,7 +51,22 @@
 									 <option value="14" th:selected="${category_id == 14}">スイーツ</option>
 									 <option value="15" th:selected="${category_id == 15}">パン</option>
                                  </select>
-                                 <select class="form-select" aria-label="Default select example" name="price" th:value="${price}">
+                                         </div>
+                                         <div class="form-group">
+                                             <button type="submit" class="btn text-white shadow-sm w-100 nagoyameshi-btn">検索</button>
+                                         </div>                                           
+                                     </form>
+                                 </div>
+                             </div>
+                                 
+                             <div class="card mb-3">
+                                 <div class="card-header">
+                                     予算から探す
+                                 </div>
+                                 <div class="card-body">
+                                     <form method="get" th:action="@{/shop}" class="w-100">
+                                         <div class="form-group mb-3">
+                                             <select class="form-select" aria-label="Default select example" name="price" th:value="${price}">
 									 <option value="" selected>予算</option>
 									 <option value="2000" th:selected="${price == 2000}">~¥2000</option>
 									 <option value="3000" th:selected="${price == 3000}">~¥3000</option>
@@ -55,7 +83,21 @@
 									 <option value="14000" th:selected="${price == 14000}">~¥14000</option>
 									 <option value="15000" th:selected="${price == 15000}">~¥15000</option>
                                  </select>
-                                  <select class="form-select" aria-label="Default select example" name="capacity" th:value="${capacity}">
+                                         </div>
+                                         <div class="form-group">
+                                             <button type="submit" class="btn text-white shadow-sm w-100 nagoyameshi-btn">検索</button>
+                                         </div>                                           
+                                     </form>
+                                 </div>
+                             </div>
+                             <div class="card mb-3">
+                                 <div class="card-header">
+                                     人数から探す
+                                 </div>
+                                 <div class="card-body">
+                                     <form method="get" th:action="@{/shop}" class="w-100">
+                                         <div class="form-group mb-3">
+                                            <select class="form-select" aria-label="Default select example" name="capacity" th:value="${capacity}">
 									 <option value="" selected >人数</option>
 									 <option value="1" th:selected="${capacity == 1}">1名</option>
 									 <option value="2" th:selected="${capacity == 2}">2名</option>
@@ -73,10 +115,16 @@
 									 <option value="14" th:selected="${capacity == 14}">14名</option>
 									 <option value="15" th:selected="${capacity == 15}">15名</option>
                                  </select>
-                                 <button type="submit" class="btn text-white shadow-sm nagoyameshi-btn">検索</button> 
-                             </div>               
-                         </form>
-                         </nav> 
+                                         </div>
+                                         <div class="form-group">
+                                             <button type="submit" class="btn text-white shadow-sm w-100 nagoyameshi-btn">検索</button>
+                                         </div>                                           
+                                     </form>
+                                 </div>
+                             </div>
+                             </div>           
+             
+                              
                          
                           <div class="col">                                                                          
                              <div class="d-flex justify-content-between flex-wrap">                                
@@ -96,8 +144,8 @@
                                  </form>                                  
                              </div>        
 
-                             </div>                               
-                         </div>
+                                                         
+                         
                          <div class="mb-3" th:each="shop : ${shopPage}">
                                  <a th:href="@{/shop/__${shop.getId()}__}" class="link-dark nagoyameshi-card-link">
                                      <div class="card h-100">   
@@ -129,7 +177,7 @@
                                                          <span class="text-body" th:text="'¥' + ${#numbers.formatInteger(shop.getPrice(), 1, 'COMMA')}"></span>
                                                      </p>
                                                      <p class="card-text">
-														 <span class="text-body" th:text="${#dates.format(shop.getTimeStart(),'HH:mm')} + '〜' + ${#dates.format(shop.getTimeEnd(),'HH:mm')}"></span>
+														 <span class="text-body" th:text="${shop.getTimeStart()} + '〜' + ${shop.getTimeEnd()}"></span>
 													 </p> 
                                                                                      
                                                  </div>

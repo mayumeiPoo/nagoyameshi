@@ -75,7 +75,8 @@
                                                          <label for="fromReservationTime" class="col-md-5 col-form-label text-md-center fw-bold">予約時間</label>
                                                          <div class="col-md-5">    
                                                          <div th:if="${#fields.hasErrors('fromReservationTime')}" class="text-danger small mb-2" th:errors="*{fromReservationTime}"></div>                                          
-                                                         <input type="time" class="form-control" step="900" list="data-list" th:field="*{fromReservationTime}">                                                                 
+                                                         
+                                                         <input type="text" class="form-control" th:field="*{fromReservationTime}">                                                                 
                                                      </div>
                                                      </div>
                                                      

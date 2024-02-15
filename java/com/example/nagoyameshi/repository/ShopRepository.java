@@ -35,4 +35,6 @@ public interface ShopRepository extends JpaRepository<Shop,Integer>{
     public Page<Shop> findAllByOrderByCreatedAtDesc(Pageable pageable);
     public Page<Shop> findAllByOrderByPriceAsc(Pageable pageable);
     public Page<Shop> findAllByOrderByPriceDesc(Pageable pageable);
+    
+    
 }
