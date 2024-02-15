@@ -130,7 +130,7 @@
                                              </div>
                      
                                              <div class="col">
-                                                 <span th:text="${#dates.format(shop.getTimeStart(),'HH:mm')} + '〜' + ${#dates.format(shop.getTimeEnd(),'HH:mm')}"></span>
+                                                 <span th:text="${shop.getTimeStart()} + '〜' + ${shop.getTimeEnd()}"></span>
                                              </div>
                                          </div>                                       
                                      </div>

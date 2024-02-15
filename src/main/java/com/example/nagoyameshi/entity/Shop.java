@@ -1,6 +1,5 @@
 package com.example.nagoyameshi.entity;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 
 import jakarta.persistence.Column;
@@ -55,10 +54,10 @@ public class Shop {
     private Integer capacity;
     
     @Column(name = "time_start")
-    private Time timeStart;
+    private String timeStart;
     
     @Column(name = "time_end")
-    private Time timeEnd;
+    private String timeEnd;
     
     @Column(name = "created_at", insertable = false, updatable = false)
     private Timestamp createdAt;

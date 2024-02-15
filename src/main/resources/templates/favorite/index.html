@@ -45,7 +45,7 @@
 														 <span th:text="'¥' +${#numbers.formatInteger(favorite.getShop().getPrice(), 1, 'COMMA')}"></span>
 													 </p>
 													 <p class="card-text">
-														 <span class="text-body" th:text="${#dates.format(favorite.getShop().getTimeStart(),'HH:mm')} + '〜' + ${#dates.format(favorite.getShop().getTimeEnd(),'HH:mm')}"></span>
+														 <span class="text-body" th:text="${favorite.getShop().getTimeStart()} + '〜' + ${favorite.getShop().getTimeEnd()}"></span>
 													 </p> 
 												 </div>
 											 </div>

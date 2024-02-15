@@ -83,23 +83,7 @@ public class ShopController {
         	} else {
             shopPage = shopRepository.findByCapacityGreaterThanEqualOrderByCreatedAtDesc(capacity, pageable);
         	}
-         } else if(price != null && area != null && !area.isEmpty()){
-        	 if(order != null && order.equals("priceAsc")) {
-        		 shopPage = shopRepository.findByPriceLessThanEqualAndStationLikeOrderByPriceAsc(price,"%" + area + "%" ,pageable);
-        	}else if (order != null && order.equals("priceDesc")) {
-        		 shopPage = shopRepository.findByPriceLessThanEqualAndStationLikeOrderByPriceDesc(price,"%" + area + "%" ,pageable);
-        	} else {
-        		 shopPage = shopRepository.findByPriceLessThanEqualAndStationLikeOrderByCreatedAtDesc(price,"%" + area + "%" ,pageable); 
-        	}
-         } else if (price != null && area != null && !area.isEmpty()&& category_id != null) {
-        	 if(order != null && order.equals("priceAsc")) {
-        		 shopPage = shopRepository.findByPriceLessThanEqualAndStationLikeAndCategoryIdOrderByPriceAsc(price,"%" + area + "%" , category_id ,pageable);
-        	 }else if (order != null && order.equals("priceDesc")) {
-        		 shopPage = shopRepository.findByPriceLessThanEqualAndStationLikeAndCategoryIdOrderByPriceDesc(price,"%" + area + "%" , category_id ,pageable);
-        	 }else {
-        		 shopPage = shopRepository.findByPriceLessThanEqualAndStationLikeAndCategoryIdOrderByCreatedAtDesc(price,"%" + area + "%" , category_id ,pageable);
-        	 }
-         }else {
+        } else {
         	if (order != null && order.equals("priceAsc")) {
         		shopPage = shopRepository.findAllByOrderByPriceAsc(pageable);
         	} else if (order != null && order.equals("priceDesc")){

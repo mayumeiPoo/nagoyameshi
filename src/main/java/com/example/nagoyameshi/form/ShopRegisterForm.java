@@ -1,7 +1,5 @@
 package com.example.nagoyameshi.form;
 
-import java.sql.Time;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import com.example.nagoyameshi.entity.Category;
@@ -44,10 +42,10 @@ public class ShopRegisterForm {
     private  String station;
     
     
-    private Time timeStart;
+    private String timeStart;
     
     
-    private Time timeEnd;
+    private String timeEnd;
     
     @NotNull(message = "カテゴリを選択してください。")
     @ManyToOne
