@@ -45,23 +45,20 @@
 									 <a class="nav-link link-secondary" th:href="@{/shop/__${shop.getId()}__/review}">レビュー</a>
 								 </li>
 								 <li class="nav-item">
-									 <a class="nav-link link-secondary" th:href="@{__${shop.getId()}__/map}">地図</a>
+									 <a class="nav-link link-secondary" th:href="@{/shop/__${shop.getId()}__/map}">地図</a>
 								 </li>
 						</ul>
 						<br>
 						
-						<div sec:authorize="isAnonymous()"
-							class="col-lg-4 px-0 ps-lg-4 mb-4">
-							<div class="card">
-								<div class="card-body">
-									<a th:href="@{/login}"></a>
-									<button type="submit"
-										class="btn text-white shadow-sm w-100 nagoyameshi-btn"
-										disabled>予約する</button>
-								</div>
+						<div sec:authorize="hasRole('ROLE_GENERAL')">
+							<p class="text-center">予約するには有料会員登録が必要です。</p>
+							<div class="row justify-content-center mb-4">
+								 <div class="col-lg-4">
+									 <a  th:href="@{/subscription/register}"class="btn text-white shadow-sm w-100 nagoyameshi-btn">アップグレード</a>
+								 </div>
 							</div>
 						</div>
-						<div sec:authorize="isAuthenticated()">                  
+						<div sec:authorize="hasRole('ROLE_PREMIUM')">                  
                                                  <form method="get" th:action="@{/shop/__${shop.getId()}__/reservation/input}" th:object="${reservationInputForm}">                                                                                                                                                                       
                                                      <div class="form-group row mb-4">                                            
                                                          <label for="fromReservationDate" class="col-md-5 col-form-label text-md-center fw-bold">予約日</label>

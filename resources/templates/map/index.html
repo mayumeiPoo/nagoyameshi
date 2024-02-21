@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+ <html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	 <head>
+         <div th:replace="~{fragment :: meta}"></div>   
+              
+         <div th:replace="~{fragment :: styles}"></div>
+         
+           
+         <title>地図</title>   
+     </head>
+     <body>
+		  <div class="nagoyameshi-wrapper">
+			  <div th:replace="~{fragment :: header}"></div>
+			  <main>
+				  <div class="container pt-4 pb-5 nagoyameshi-container">
+					  <div class="row justify-content-center">
+						  <div class="col-xxl-9 col-xl-10 col-lg-11">
+							  <nav class="mb-4" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                                 <ol class="breadcrumb mb-0">                        
+                                     <li class="breadcrumb-item"><a th:href="@{/}">ホーム</a></li>
+                                     <li class="breadcrumb-item"><a th:href="@{/shop}">店舗一覧</a></li>
+                                     <li class="breadcrumb-item"><a th:href="@{/shop/__${shop.getId()}__}">店舗詳細</a></li>
+                                     <li class="breadcrumb-item active" aria-current="page">地図</li>
+                                 </ol>
+                             </nav>
+                             
+                             <ul class="nav nav-tabs mb-2">
+								 <li class="nav-item">
+									 <a class="nav-link link-secondary" th:href="@{/shop/__${shop.getId()}__}">トップ</a> 
+								 </li>
+								 <li class="nav-item">
+									 <a class="nav-link link-secondary" th:href="@{/shop/__${shop.getId()}__/reservation/createform}">予約</a>
+								 </li>
+								 <li class="nav-item">
+									 <a class="nav-link link-secondary" th:href="@{/shop/__${shop.getId()}__/review}">レビュー</a>
+								 </li>
+								 <li class="nav-item">
+									 <a class="nagoyameshi-activ nav-link active text-white"aria-current="page" th:href="@{__${shop.getId()}__/map}">地図</a>
+								 </li>
+							 </ul>
+                             
+                             <div id="map"></div>
+
+                             
+										   
+						  </div>
+					  </div>
+				  </div>
+			  </main>
+		  <!-- フッター -->
+             <div th:replace="~{fragment :: footer}"></div>
+         </div>    
+         
+         <div th:replace="~{fragment :: scripts}"></div>
+         <script th:src="@{/js/map.js}"></script>
+	 </body>
+ </html>

@@ -41,7 +41,7 @@
 									 <a class="nagoyameshi-activ nav-link active text-white" aria-current="page" th:href="@{/shop/__${shop.getId()}__/review}">レビュー</a>
 								 </li>
 								 <li class="nav-item">
-									 <a class="nav-link link-secondary" th:href="@{__${shop.getId()}__/map}">地図</a>
+									 <a class="nav-link link-secondary" th:href="@{/shop/__${shop.getId()}__/map}">地図</a>
 								 </li>
 							 </ul>
                             <br>
@@ -102,7 +102,8 @@
 							
 								 <div sec:authorize="isAuthenticated()" th:unless="${hasUserAlreadyReviewed}" class="row justify-content-center mb-4">
 									 <div class="col-lg-4">
-										 <a th:href="@{/shop/__${shop.getId()}__/review/register}"class="btn text-white shadow-sm w-100 nagoyameshi-btn">レビューを投稿する</a>
+										 <a sec:authorize="hasRole('ROLE_PREMIUM')" th:href="@{/shop/__${shop.getId()}__/review/register}"class="btn text-white shadow-sm w-100 nagoyameshi-btn">レビューを投稿する</a>
+										 <a sec:authorize="hasRole('ROLE_GENERAL')" th:href="@{/subscription/register}"class="btn text-white shadow-sm w-100 nagoyameshi-btn">レビューを投稿する</a>
 									 </div>
 								 </div>
 								 <!-- ページネーション -->

@@ -49,8 +49,27 @@
 							</a>
 							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownGeneral">
 								<a class="dropdown-item " th:href="@{/user}">会員情報</a>
+								<a class="dropdown-item" th:href="@{/subscription/register}">有料会員登録</a>
+							
+                                     
+                                     <div class="dropdown-divider"></div>                                                                  
+                                     <a class="dropdown-item nagoyameshi-dropdown-item" th:href="@{/logout}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                         ログアウト
+                                     </a>
+                                     <form class="d-none" id="logout-form" th:action="@{/logout}" method="post"></form>                                     
+                                 </div>
+						</li>
+						
+						<!--有料会員で表示 -->
+						<li class="nav-item" sec:authorize="hasRole('ROLE_PREMIUM')">
+							<a id="narbarDropdownGenaral" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+							<span sec:authentication="principal.user.name"></span>
+							</a>
+							<div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownGeneral">
+								<a class="dropdown-item " th:href="@{/user}">会員情報</a>
 								<a class="dropdown-item " th:href="@{/reservation}">予約一覧</a> 
 								<a class="dropdown-item " th:href="@{/favorite}">お気に入り一覧</a>
+								
 							
                                      
                                      <div class="dropdown-divider"></div>                                                                  
@@ -69,7 +88,8 @@
          
                                  <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownAdmin">
 									 <a class="dropdown-item nagoyaemshi-dropdown-item" th:href="@{/admin/user}">会員一覧</a>                                                                                           
-                                     <a class="dropdown-item nagoyameshi-dropdown-item" th:href="@{/admin/shop}">店舗一覧</a>                                                                                                     
+                                     <a class="dropdown-item nagoyameshi-dropdown-item" th:href="@{/admin/shop}">店舗一覧</a>
+                                     <a class="dropdown-item nagoyameshi-dropdown-item" th:href="@{/admin/category}">カテゴリー一覧</a>                                                                                                     
                                                                
                                      <div class="dropdown-divider"></div>
                                      

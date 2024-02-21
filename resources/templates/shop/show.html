@@ -48,7 +48,7 @@
 							 </ul>
 							 <!--お気に入り追加ボタン-->
 							 <div class="text-end">
-								 <div sec:authorize="isAuthenticated()">
+								 <div sec:authorize="hasRole('ROLE_PREMIUM')">
 									 <div th:if="${isFavorite}">
 										 <a href="#" class="un-favorite-btn" onclick="event.preventDefault(); document.getElementById('favorite-form').submit();">&#9829;お気に入り解除</a>
 										 <form method="post" th:action="@{/shop/__${shop.getId()}__/favorite/__${favorite.getId()}__/delete}" id="favorite-form" class="d-none">
@@ -60,6 +60,15 @@
 										 <a href="#" class="favorite-btn" onclick="event.preventDefault(); document.getElementById('favorite-form').submit();">&#9825;お気に入り追加</a>	
 										 <form method="post" th:action="@{/shop/__${shop.getId()}__/favorite/create}" id="favorite-form" class="d-none"></form>
 									 </div>
+								 </div>
+							 </div>
+							 <div class="text-end">
+								 <div sec:authorize="hasRole('ROLE_GENERAL')">
+									 
+									 
+										 <a th:href="@{/subscription/register}" class="btn favorite-btn" >&#9825;お気に入り追加</a>	
+										 
+									
 								 </div>
 							 </div>
 							 <br>

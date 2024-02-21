@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+	<head>
+		<div th:replace="~{fragment :: meta}"></div>   
+              
+         <div th:replace="~{fragment :: styles}"></div>
+         <title>有料会員登録</title>
+	</head>
+	<body>
+		<div class="nagoyameshi-wrapper">
+			<div th:replace="~{fragment :: header}"></div>
+			<main>
+				<div class="container nagoyameshi-container pb-5">
+					<div class="row justify-content-center">
+						<nav class="my-3" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                             <ol class="breadcrumb mb-0">                        
+                                 <li class="breadcrumb-item"><a th:href="@{/}">ホーム</a></li>
+                                 <li class="breadcrumb-item active" aria-current="page">有料会員登録</li>
+                             </ol>
+                         </nav>
+                         <div th:if="${successMessage}" class="alert alert-warning">
+                                 <span th:text="${successMessage}"></span>
+                             </div>
+                             
+                         <h1 class="mb-3 text-center">有料会員登録</h1>
+                         <br>
+                         <br>
+                         <br>
+                         
+                         
+                         
+                         
+                         
+                         <div class="card" style="width: 18rem;">
+                        <div class="card-img-top">
+	                     <img class="img-subscription-01" th:src="@{/images/favorite.png}">
+                        </div>
+                        <div class="card-body">
+                        <span class="card-text">ユーザーのお気に入り店舗の登録や一覧の作成</span>
+                        </div>
+                       </div>
+                       <div class="card" style="width: 18rem;">
+                      <div class="card-img-top">
+	                  <img class="img-subscription-02" th:src="@{/images/review.jpg}">
+                      </div>
+                      <div class="card-body">
+                     <span class="card-text">レビューの投稿</span>
+                      </div>
+                      </div>      
+                       <div class="card" style="width: 18rem;">
+                       <div class="card-img-top">
+	                   <img class="img-subscription-02" th:src="@{/images/gift.jpg}">
+                       </div>
+                       <div class="card-body">
+                       <span class="card-text">誕生月に会計時に使える500円クーポンプレゼント！</span>
+                       </div>
+                      </div>
+                         
+							 
+            
+                            <form class="card-form" method="post" th:action="@{/subscription/create}" th:object="${userEditForm}">   
+								<input type="hidden" th:field="*{id}">
+                                <div class="form-group row mb-3">
+                                     <div class="col-md-5">
+                                         <label for="cardNum" class="col-form-label text-md-left fw-bold">
+                                             <div class="d-flex align-items-center">
+                                                 <span class="me-1">カード番号</span>
+                                                 <span class="badge bg-danger">必須</span>
+                                             </div>
+                                         </label>
+                                     </div>
+                                     <div class="col-md-7">                                    
+                                         <div th:if="${#fields.hasErrors('cardNum')}" class="text-danger small mb-2" th:errors="*{cardNum}"></div>                                    
+                                         <input type="text" class="form-control" th:field="*{cardNum}" autocomplete="off" >
+                                     </div>
+                                 </div>
+                                                                     
+                           
+                            
+                            <div class="row justify-content-center mb-4">
+								<div class="col-lg-4">
+                                <button class="btn text-white shadow-sm w-100 nagoyameshi-btn">登録</button>
+                            </div> 
+                            </div>
+                            </form>
+                     
+							 
+						 </div>
+				</div>
+					
+			</main>
+		<!-- フッター -->
+             <div th:replace="~{fragment :: footer}"></div>
+         </div>    
+         
+         <div th:replace="~{fragment :: scripts}"></div>
+         
+	</body>
+</html>
