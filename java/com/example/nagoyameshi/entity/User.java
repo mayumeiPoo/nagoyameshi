@@ -51,12 +51,13 @@ public class User {
 	@Column(name = "password")
 	private String password;
 	
+	@Column(name = "card_num")
+	private String cardNum;
+	
 	@ManyToOne
 	@JoinColumn(name = "role_id")
 	private Role role;
 	
-	@Column(name = "upgrade")
-	private Integer upgrade;
 	
 	@Column(name = "enabled")
     private Boolean enabled;

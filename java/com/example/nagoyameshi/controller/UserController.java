@@ -16,7 +16,6 @@ import com.example.nagoyameshi.entity.User;
 import com.example.nagoyameshi.form.UserEditForm;
 import com.example.nagoyameshi.repository.UserRepository;
 import com.example.nagoyameshi.security.UserDetailsImpl;
-import com.example.nagoyameshi.service.StripeService;
 import com.example.nagoyameshi.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
@@ -26,12 +25,12 @@ import jakarta.servlet.http.HttpServletRequest;
 public class UserController {
 	private final UserRepository userRepository;
 	private final UserService userService;
-	private final StripeService stripeService;
+
 	
-	public UserController(UserRepository userRepository, UserService userService,StripeService stripeService) {
+	public UserController(UserRepository userRepository, UserService userService) {
 		this.userRepository = userRepository;
 		this.userService = userService;
-		this.stripeService = stripeService;
+		
 	}
 	
 	@GetMapping
@@ -46,10 +45,9 @@ public class UserController {
 	@GetMapping("/edit")
 	public String edit(@AuthenticationPrincipal UserDetailsImpl userDetailsImpl, Model model,HttpServletRequest httpServletRequest) {
 		User user = userRepository.getReferenceById(userDetailsImpl.getUser().getId());
-		UserEditForm userEditForm = new UserEditForm(user.getId(), user.getName(), user.getFurigana(), user.getPostalCode(), user.getAddress(), user.getPhoneNumber(), user.getEmail(), user.getUpgrade());
-		String sessionId = stripeService.createStripeSession(user.getName(), userEditForm, httpServletRequest);
+		UserEditForm userEditForm = new UserEditForm(user.getId(), user.getName(), user.getFurigana(), user.getPostalCode(), user.getAddress(), user.getPhoneNumber(), user.getEmail(),user.getCardNum());
 		model.addAttribute("userEditForm", userEditForm);
-		model.addAttribute("sessionId", sessionId);
+		
 		
 		return "user/edit";
 	}
