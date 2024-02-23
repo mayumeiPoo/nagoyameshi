@@ -2,6 +2,7 @@ package com.example.nagoyameshi.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -84,19 +85,25 @@ public UserService(UserRepository userRepository,RoleRepository roleRepository,P
  public boolean isEmailChanged(UserEditForm userEditForm) {
      User currentUser = userRepository.getReferenceById(userEditForm.getId());
      return !userEditForm.getEmail().equals(currentUser.getEmail());      
- }  
+ } 
+ 
+ 
+ 
  @Transactional
  public void updateRole(User user, String roleName) {
      Role role = roleRepository.findByName(roleName);
      user.setRole(role);
      userRepository.save(user);
  }
- @Transactional
- public void updateCardNum(User user,String cardNum) {
-	 user.setCardNum(cardNum);
+ 
+
+ public void create(Map<String, String> subscriptionObject) {
+	 Integer userId = Integer.valueOf(subscriptionObject.get("userId"));
+	 User user = userRepository.getReferenceById(userId);
 	 
 	 userRepository.save(user);
  }
+
  public void refreshAuthenticationByRole(String newRole) {
      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
@@ -106,5 +113,7 @@ public UserService(UserRepository userRepository,RoleRepository roleRepository,P
 
      SecurityContextHolder.getContext().setAuthentication(newAuth);
  }
+
+
  
 }
