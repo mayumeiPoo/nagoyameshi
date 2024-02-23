@@ -21,17 +21,17 @@
                          <div th:if="${successMessage}" class="alert alert-warning">
                                  <span th:text="${successMessage}"></span>
                              </div>
+             
+                             <h1 class="mb-4 text-center">有料会員の解約</h1>
+                             <br>
                              
-                         <h1 class="mb-3 text-center">有料会員登録</h1>
-                         <br>
-                         <br>
-                         <br>
-                         
-                         
-                         
-                         
-                         
-                         <div class="card" style="width: 18rem;">
+                             
+                             <div class="text-center">
+                             <p>有料プランを解約すると以下の特典を受けられなくなります。本当に解約してもよろしいですか？</p>
+                             </div>
+                             <br>
+                             <br>
+                             <div class="card" style="width: 18rem;">
                         <div class="card-img-top">
 	                     <img class="img-subscription-01" th:src="@{/images/favorite.png}">
                         </div>
@@ -55,30 +55,23 @@
                        <span class="card-text">誕生月に会計時に使える500円クーポンプレゼント！</span>
                        </div>
                       </div>
-                         
-							 
+                            <br>
+                            
             
-                          <form id="cardForm" method="post" th:action="@{/subscription/create}">   
-                                <div id="cardHolderNameError"></div>                     
-                                <input class="nagoyameshi-card-holder-name mb-3" id="cardHolderName" type="text" placeholder="カード名義人" required>
-                                
-                                <div id="cardElementError"></div>                                 
-                                <div class="nagoyameshi-card-element mb-4" id="cardElement" type="text"></div>  
-                                                                     
-                            <div class="row justify-content-center mb-4">
+                            <form method="post" th:action="@{/subscription/delete}">                                
+                                <div class="row justify-content-center mb-4">
 								<div class="col-lg-4">
-                                <button id="paymentButton" class="btn text-white shadow-sm w-100 nagoyameshi-btn">決済する</button>
-                            </div> 
-                            </div>
+                                    <button class="btn text-white shadow-sm w-100 nagoyameshi-btn">解約</button>
+                                </div>
+                                </div>
                             </form>
-                           
-                     
-							 
-						 </div>
-				</div>
-					
-			</main>
-		<!-- フッター -->
+                                         
+                         </div>
+                     </div>
+                 </div>  
+             </main>
+             
+             <!-- フッター -->
              <div th:replace="~{fragment :: footer}"></div>
          </div>    
          
@@ -88,5 +81,5 @@
              const sessionId = /*[[${sessionId}]]*/"sessionId";                
          </script>        
          <script th:src="@{/js/stripe.js}"></script>  
-	</body>
-</html>
+   </body>
+ </html>
