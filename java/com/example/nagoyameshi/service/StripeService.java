@@ -41,7 +41,9 @@ private final UserService userService;
                                     SessionCreateParams.LineItem.PriceData.ProductData.builder()
                                         .setName(name)
                                         .build())
-                                .setCurrency("jpy")                                
+                                .setUnitAmount(300L)
+                                .setCurrency("jpy")  
+                             
                                 .build())
                         .setQuantity(1L)
                         .build())

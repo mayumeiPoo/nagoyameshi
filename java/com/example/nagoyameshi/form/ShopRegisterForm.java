@@ -52,6 +52,7 @@ public class ShopRegisterForm {
 	@JoinColumn(name = "category_id")
 	private Category category;
 
-    
+    private String lat;
+    private String lng;
    
 }
