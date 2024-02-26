@@ -1,16 +1,35 @@
 
-let url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?language=ja&input=$(“#address”).val()&inputtype=textquery&fields=formatted_address,photos,rating,geometry&key=AIzaSyCtPm_1RFZHhvrBw95zXKoCHwbba26HJqw"
 $(function() {
    // ボタンがクリックされた場合
    $('button').on('click', function(){
-     const Http = new XMLHttpRequest();
-     const url="https://maps.googleapis.com/maps/api/place/findplacefromtext/json?language=ja&input=$(“#address”).val()&inputtype=textquery&fields=formatted_address,photos,rating,geometry&key=AIzaSyCtPm_1RFZHhvrBw95zXKoCHwbba26HJqw";
-     Http.open("GET", url);
-Http.send();
-Http.onreadystatechange = (e) => {
-console.log(Http.responseText)
-let resVal = Http.responseText;
-}
-JSONGetElement ( "results[0].geometry.location.lat" )
-   });
- });
+     function getCoordinates() {
+            const address = $('#addressInput').val();
+
+            // Google Geocoding API key (replace with your own key)
+            const apiKey = 'AIzaSyCtPm_1RFZHhvrBw95zXKoCHwbba26HJqw';
+
+            const geocodingUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(address)}&key=${apiKey}`;
+
+            $.ajax({
+                url: geocodingUrl,
+                method: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (data.status === 'OK') {
+                        const location = data.results[0].geometry.location;
+                        const latitude = location.lat;
+                        const longitude = location.lng;
+
+                        console.log(`Address: ${address}`);
+                        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+                    } else {
+                        console.error(`Geocoding failed with status: ${data.status}`);
+                    }
+                },
+                error: function(error) {
+                    console.error('Error fetching data:', error);
+                }
+            });
+        }
+        })
+        })
