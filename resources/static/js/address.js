@@ -15,8 +15,7 @@
                         const latitude = location.lat;
                         const longitude = location.lng;
 
-                        console.log(`Address: ${address}`);
-                        console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+                       setInputValue(latitude, longitude);
                         
                         
                     } else {
@@ -25,4 +24,12 @@
                 })
                 .catch(error => console.error('Error fetching data:', error));
         }
+        
+        function setInputValue(latitude, longitude) {
+    var latformElement = document.getElementById("latform");
+    latformElement.value = latitude;
+
+    var lngformElement = document.getElementById("lngform");
+    lngformElement.value = longitude;
+}
         
