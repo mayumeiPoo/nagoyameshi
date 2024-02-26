@@ -35,6 +35,11 @@ public interface ShopRepository extends JpaRepository<Shop,Integer>{
     public Page<Shop> findAllByOrderByCreatedAtDesc(Pageable pageable);
     public Page<Shop> findAllByOrderByPriceAsc(Pageable pageable);
     public Page<Shop> findAllByOrderByPriceDesc(Pageable pageable);
+	public Page<Shop> findByPriceLessThanEqualOrderByCreatedAtAsc(Integer price, Pageable pageable);
+	public Page<Shop> findByStationLikeOrderByCreatedAtAsc(String string, Pageable pageable);
+	public Page<Shop> findByCategoryIdOrderByCreatedAtAsc(Integer category_id, Pageable pageable);
+	public Page<Shop> findByCapacityGreaterThanEqualOrderByCreatedAtAsc(Integer capacity, Pageable pageable);
+	public Page<Shop> findAllByOrderByCreatedAtAsc(Pageable pageable);
     
     
 }

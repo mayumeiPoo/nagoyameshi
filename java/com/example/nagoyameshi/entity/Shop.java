@@ -59,11 +59,20 @@ public class Shop {
     @Column(name = "time_end")
     private String timeEnd;
     
+    @Column(name = "lat")
+    private String lat;
+    
+    @Column(name = "lng")
+    private String lng;
+    
     @Column(name = "created_at", insertable = false, updatable = false)
     private Timestamp createdAt;
 
     @Column(name = "updated_at", insertable = false, updatable = false)
     private Timestamp updatedAt;
     
-
-}
+    
+	
+		
+	}
+  

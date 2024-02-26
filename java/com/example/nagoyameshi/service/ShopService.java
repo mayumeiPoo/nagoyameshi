@@ -46,6 +46,8 @@ public class ShopService {
         shop.setTimeStart(shopRegisterForm.getTimeStart());
         shop.setTimeEnd(shopRegisterForm.getTimeEnd());
         shop.setCategory(shopRegisterForm.getCategory());
+        shop.setLat(shopRegisterForm.getLat());
+        shop.setLng(shopRegisterForm.getLng());
         
         
         
