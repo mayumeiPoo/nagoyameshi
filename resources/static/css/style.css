@@ -196,6 +196,7 @@ p {
 #map {
   height: 400px;
   width: 600px;
+ left: 180px;
 }
  @media screen and (min-width: 1400ox){
 	.nagoyameshi-container{
