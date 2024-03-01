@@ -59,6 +59,8 @@ public class User {
 	@Column(name = "enabled")
     private Boolean enabled;
 	
+	@Column(name = "amount")
+    private Integer amount;  
 	
 	
 	@Column(name = "created_at", insertable = false, updatable = false)

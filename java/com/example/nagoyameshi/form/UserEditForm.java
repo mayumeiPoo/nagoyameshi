@@ -28,7 +28,10 @@ public class UserEditForm {
     
     @NotBlank(message = "メールアドレスを入力してください。")
     private String email;
-    
+
+    private Integer amount;
+
+	
     
 
 }

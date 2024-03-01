@@ -3,6 +3,8 @@ package com.example.nagoyameshi.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.example.nagoyameshi.entity.Reservation;
@@ -48,5 +50,19 @@ public class ReservationService {
 	public boolean isWithinCapacity(Integer numberOfPeople, Integer capacity) {
         return numberOfPeople <= capacity;
 
+
 }
+	// ユーザーに関連する予約情報を取得（ページング対応）
+	public Page<Reservation> getCurrentReservations(User user, Pageable pageable) {
+	    LocalDate currentDate = LocalDate.now();
+	    LocalTime currentTime = LocalTime.now();
+	    return reservationRepository.findByUserAndReservationDateAfterOrReservationDateEqualsAndReservationTimeAfter(user, currentDate, currentDate, currentTime, pageable);
+	}
+
+	// ユーザーに関連する過去の予約情報を取得（ページング対応）
+	public Page<Reservation> getPastReservations(User user, Pageable pageable) {
+	    LocalDate currentDate = LocalDate.now();
+	    LocalTime currentTime = LocalTime.now();
+	    return reservationRepository.findByUserAndReservationDateBeforeOrReservationDateEqualsAndReservationTimeBefore(user, currentDate, currentDate, currentTime, pageable);
+	}
 }

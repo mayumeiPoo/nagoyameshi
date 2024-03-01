@@ -46,5 +46,36 @@ public class Reservation {
     @Column(name = "updated_at", insertable = false, updatable = false)
     private Timestamp updatedAt;
 	
+    public LocalDate getReservationDate() {
+        return reservationDate;
+    }
 
+    public void setReservationDate(LocalDate reservationDate) {
+        this.reservationDate = reservationDate;
+    }
+
+    public LocalTime getReservationTime() {
+        return reservationTime;
+    }
+
+    public void setReservationTime(LocalTime reservationTime) {
+        this.reservationTime = reservationTime;
+    }
+
+    // 未来の予約かどうかを判定するメソッド
+    public boolean isFutureReservation() {
+        LocalDate currentDate = LocalDate.now();
+        LocalTime currentTime = LocalTime.now();
+
+        return reservationDate.isAfter(currentDate) || (reservationDate.isEqual(currentDate) && reservationTime.isAfter(currentTime));
+    }
+
+    // 過去の予約かどうかを判定するメソッド
+    public boolean isPastReservation() {
+        LocalDate currentDate = LocalDate.now();
+        LocalTime currentTime = LocalTime.now();
+
+        return reservationDate.isBefore(currentDate) || (reservationDate.isEqual(currentDate) && reservationTime.isBefore(currentTime));
+    }
+    
 }

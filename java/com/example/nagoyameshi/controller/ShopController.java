@@ -1,5 +1,7 @@
 package com.example.nagoyameshi.controller;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.example.nagoyameshi.entity.Category;
 import com.example.nagoyameshi.entity.Favorite;
 import com.example.nagoyameshi.entity.Shop;
 import com.example.nagoyameshi.entity.User;
 import com.example.nagoyameshi.form.ReservationInputForm;
+import com.example.nagoyameshi.repository.CategoryRepository;
 import com.example.nagoyameshi.repository.FavoriteRepository;
 import com.example.nagoyameshi.repository.ReviewRepository;
 import com.example.nagoyameshi.repository.ShopRepository;
@@ -31,13 +35,15 @@ public class ShopController {
 	private final ReviewRepository reviewRepository;
 	private final FavoriteService favoriteService;
 	private final FavoriteRepository favoriteRepository;
+	private final CategoryRepository categoryRepository;
 	
-	public ShopController(ShopRepository shopRepository, ReviewService reviewService, ReviewRepository reviewRepository,FavoriteRepository favoriteRepository, FavoriteService favoriteService) {
+	public ShopController(ShopRepository shopRepository, ReviewService reviewService, ReviewRepository reviewRepository,FavoriteRepository favoriteRepository, FavoriteService favoriteService,CategoryRepository categoryRepository) {
 		this.shopRepository = shopRepository;
 		this.reviewService = reviewService;
 		this.reviewRepository = reviewRepository;
 		this.favoriteRepository = favoriteRepository;
 		this.favoriteService = favoriteService;
+		this.categoryRepository = categoryRepository;
 	}
 	
 	@GetMapping
@@ -51,6 +57,7 @@ public class ShopController {
                         Model model)
 	{
 		Page<Shop>shopPage;
+		List<Category> category = categoryRepository.findAll();
 		if (price != null) {
 			 if (order != null && order.equals("priceAsc")) {
 				 shopPage = shopRepository.findByPriceLessThanEqualOrderByPriceAsc(price, pageable);
@@ -100,6 +107,7 @@ public class ShopController {
 		model.addAttribute("caregory_id",category_id);
 		model.addAttribute("capacity",capacity);
 		model.addAttribute("order", order);
+		model.addAttribute("category", category);
 		
 		return "shop/index";
 	

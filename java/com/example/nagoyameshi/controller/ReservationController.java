@@ -46,6 +46,13 @@ public class ReservationController {
      public String index(@AuthenticationPrincipal UserDetailsImpl userDetailsImpl, @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable, Model model) {
          User user = userDetailsImpl.getUser();
          Page<Reservation> reservationPage = reservationRepository.findByUserOrderByCreatedAtDesc(user, pageable);
+      // 現在の予約と過去の予約を取得
+         Page<Reservation> currentReservationsPage = reservationService.getCurrentReservations(user, pageable);
+         Page<Reservation> pastReservationsPage = reservationService.getPastReservations(user, pageable);
+
+         // モデルに追加
+         model.addAttribute("currentReservationsPage", currentReservationsPage);
+         model.addAttribute("pastReservationsPage", pastReservationsPage);
          
          model.addAttribute("reservationPage", reservationPage);         
          

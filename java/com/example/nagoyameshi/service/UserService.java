@@ -95,14 +95,16 @@ public UserService(UserRepository userRepository,RoleRepository roleRepository,P
      user.setRole(role);
      userRepository.save(user);
  }
- 
-
- public void create(Map<String, String> subscriptionObject) {
-	 Integer userId = Integer.valueOf(subscriptionObject.get("userId"));
-	 User user = userRepository.getReferenceById(userId);
-	 
-	 userRepository.save(user);
+ @Transactional
+ public void updateAmount(Map<String, String> paymentIntentObject) {
+	 Integer userId = Integer.valueOf(paymentIntentObject.get("userId"));
+	  User user = userRepository.getReferenceById(userId);
+	  Integer amount = Integer.valueOf(paymentIntentObject.get("amount")); 
+	 user.setAmount(amount);
+     userRepository.save(user);
  }
+
+ 
 
  public void refreshAuthenticationByRole(String newRole) {
      Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -113,7 +115,7 @@ public UserService(UserRepository userRepository,RoleRepository roleRepository,P
 
      SecurityContextHolder.getContext().setAuthentication(newAuth);
  }
-
+ 
 
  
 }
