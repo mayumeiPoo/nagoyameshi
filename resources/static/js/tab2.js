@@ -1,16 +1,19 @@
-'use strict';
+
 
 {
 
 const tabMenus = document.querySelectorAll('.tab__menu-item');
 console.log(tabMenus);
-
 tabMenus.forEach((tabMenu) => {
-  tabMenu.addEventListener('click', tabSwitch);
-})
+  tabMenu.addEventListener('click', (e) => {
+    console.log('Tab clicked!');
+    tabSwitch(e);
+  });
+});
 
 
 function tabSwitch(e) {
+	
 
   // クリックされた要素のデータ属性を取得
   const tabTargetData = e.currentTarget.dataset.tab;
@@ -38,10 +41,28 @@ function tabSwitch(e) {
   tabPanelItems.forEach((tabPanelItem) => {
     if (tabPanelItem.dataset.panel ===  tabTargetData) {
       tabPanelItem.classList.add('is-show');
+       console.log('Tab switch event:', tabTargetData);
+      updatePaginationLinks(tabPanelItem, tabTargetData);
     }
   })
 
 }
 
 
+}
+function updatePaginationLinks(activeTabPanel, activeTab) {
+  const paginationLinks1 = activeTabPanel.querySelectorAll('.nagoyameshi-page-link1');
+  const paginationLinks2 = activeTabPanel.querySelectorAll('.nagoyameshi-page-link2');
+
+  paginationLinks1.forEach((link, index) => {
+    const page = index + 1;
+    link.href = `/reservation?page=${page}&tab=${activeTab}`;
+    console.log(`Updated link1 ${index + 1}: ${link.href}`);
+  });
+
+  paginationLinks2.forEach((link, index) => {
+    const page = index + 1;
+    link.href = `/reservation?page=${page}&tab=${activeTab}`;
+    console.log(`Updated link2 ${index + 1}: ${link.href}`);
+  });
 }

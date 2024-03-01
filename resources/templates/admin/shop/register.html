@@ -23,7 +23,7 @@
                                 
                                 </ol>
                             </nav>
-                            <form method="post" th:action="@{/admin/shop/create}" th:object="${shopRegisterForm}" enctype="multipart/form-data">                                                            
+                            <form method="post" th:action="@{/admin/shop/create}" th:object="${shopRegisterForm}" enctype="multipart/form-data"　 onsubmit="getCoordinatesAndSubmit(event)">                                                            
                                  <div class="form-group row mb-3">
                                      <div class="col-md-4">
                                          <label for="name" class="col-form-label text-md-left fw-bold">店舗名</label>
@@ -93,7 +93,7 @@
                                      </div>
                                      <div class="col-md-8">
                                          <div th:if="${#fields.hasErrors('address')}" class="text-danger small mb-2" th:errors="*{address}"></div>
-                                         <input id="addressInput" type="text" class="form-control" th:field="*{address}">  
+                                         <input  type="text" id="addressInput" class="form-control" th:field="*{address}">  
                                      </div>
                                  </div>                                                                                
                                  
@@ -159,12 +159,15 @@
 										 </select>                               
                                      </div>
                                  </div>
+                                
                                  
                                  <div class="form-group d-flex justify-content-center my-4">
                                      <button onclick="getCoordinates()" type="submit" class="btn text-white shadow-sm w-50 nagoyameshi-btn">登録</button>
                                  </div>
                                      
-    
+                                   
+									 <input type="hidden"  id="latform"  th:field="*{lat}">
+									  <input type="hidden" id="lngform" th:field="*{lng}">
                              </form>
 						   </div>
 					  </div>
@@ -176,6 +179,7 @@
          <div th:replace="~{fragment :: scripts}"></div>
   
 		 <script th:src="@{/js/preview.js}"></script>
+		 
 		  
 	 </body>
 </html>

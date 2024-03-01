@@ -33,24 +33,10 @@
                                  <div class="card-body">
                                      <form method="get" th:action="@{/shop}" class="w-100">
                                          <div class="form-group mb-3">
-                                             <select class="form-select" aria-label="Default select example" name="category_id" th:value="${category_id}" >
-									 <option value="" selected>カテゴリ</option>
-									 <option value="1" th:selected="${category_id == 1}">定食</option>
-									 <option value="2" th:selected="${category_id == 2}">焼肉</option>
-									 <option value="3" th:selected="${category_id == 3}">寿司</option>
-									 <option value="4" th:selected="${category_id == 4}">手羽先</option>
-									 <option value="5" th:selected="${category_id == 5}">天ぷら</option>
-									 <option value="6" th:selected="${category_id == 6}">ラーメン</option>
-									 <option value="7" th:selected="${category_id == 7}">うどん</option>
-									 <option value="8" th:selected="${category_id == 8}">居酒屋</option>
-									 <option value="9" th:selected="${category_id == 9}">イタリアン</option>
-									 <option value="10" th:selected="${category_id == 10}">喫茶店</option>
-									 <option value="11" th:selected="${category_id == 11}">カフェ</option>
-									 <option value="12" th:selected="${category_id == 12}">焼き鳥</option>
-									 <option value="13" th:selected="${category_id == 13}">鉄板焼き</option>
-									 <option value="14" th:selected="${category_id == 14}">スイーツ</option>
-									 <option value="15" th:selected="${category_id == 15}">パン</option>
-                                 </select>
+                                             <select class="form-control form-select" name="category_id">
+                                                 <option value="" hidden>選択してください</option> 
+                                                 <option th:each="category : ${category}" th:value="${category.getId()}" th:selected="${category_id == category.getId()}" th:text="${category.getName()}"></option>
+                                             </select>
                                          </div>
                                          <div class="form-group">
                                              <button type="submit" class="btn text-white shadow-sm w-100 nagoyameshi-btn">検索</button>
