@@ -65,4 +65,7 @@ public class ReservationService {
 	    LocalTime currentTime = LocalTime.now();
 	    return reservationRepository.findByUserAndReservationDateBeforeOrReservationDateEqualsAndReservationTimeBefore(user, currentDate, currentDate, currentTime, pageable);
 	}
+	public long getTotalReservationCount() {
+        return reservationRepository.count();
+    }
 }

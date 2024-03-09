@@ -2,7 +2,6 @@ package com.example.nagoyameshi.service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -95,15 +94,7 @@ public UserService(UserRepository userRepository,RoleRepository roleRepository,P
      user.setRole(role);
      userRepository.save(user);
  }
- @Transactional
- public void updateAmount(Map<String, String> paymentIntentObject) {
-	 Integer userId = Integer.valueOf(paymentIntentObject.get("userId"));
-	  User user = userRepository.getReferenceById(userId);
-	  Integer amount = Integer.valueOf(paymentIntentObject.get("amount")); 
-	 user.setAmount(amount);
-     userRepository.save(user);
- }
-
+ 
  
 
  public void refreshAuthenticationByRole(String newRole) {
@@ -116,6 +107,29 @@ public UserService(UserRepository userRepository,RoleRepository roleRepository,P
      SecurityContextHolder.getContext().setAuthentication(newAuth);
  }
  
+ public int getGeneralUserCount() {
+     List<User> generalUsers = userRepository.findByRoleName("ROLE_GENERAL");
+     return generalUsers.size();
+ }
+ 
+ public int getPremiumUserCount() {
+     List<User> premiumUsers = userRepository.findByRoleName("ROLE_PREMIUM");
+     return premiumUsers.size();
+ }
+ 
+ public List<User> getManUsers() {
+     return userRepository.findByGender("男性");
+ }
 
+ public int getManUserCount() {
+     return userRepository.countByGender("男性");
+ }
+ public List<User> getWomanUsers() {
+     return userRepository.findByGender("女性");
+ }
+
+ public int getWomanUserCount() {
+     return userRepository.countByGender("女性");
+ }
  
 }

@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.nagoyameshi.entity.Reservation;
@@ -43,7 +44,7 @@ public class ReservationController {
      }    
  
      @GetMapping("/reservation")
-     public String index(@AuthenticationPrincipal UserDetailsImpl userDetailsImpl, @PageableDefault(page = 0, size = 10, sort = "id", direction = Direction.ASC) Pageable pageable, Model model) {
+     public String index(@AuthenticationPrincipal UserDetailsImpl userDetailsImpl, @RequestParam(name = "tab", defaultValue = "01") String tab,@PageableDefault(page = 0, size = 10, sort = "reservationDate", direction = Direction.ASC) Pageable pageable, Model model) {
          User user = userDetailsImpl.getUser();
          Page<Reservation> reservationPage = reservationRepository.findByUserOrderByCreatedAtDesc(user, pageable);
       // 現在の予約と過去の予約を取得
@@ -53,7 +54,8 @@ public class ReservationController {
          // モデルに追加
          model.addAttribute("currentReservationsPage", currentReservationsPage);
          model.addAttribute("pastReservationsPage", pastReservationsPage);
-         
+         model.addAttribute("activeTab", tab);
+
          model.addAttribute("reservationPage", reservationPage);         
          
          return "reservation/index";

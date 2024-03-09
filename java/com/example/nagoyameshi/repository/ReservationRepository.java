@@ -24,7 +24,8 @@ public interface ReservationRepository extends JpaRepository<Reservation,Integer
 
 
 
-	public Page<Reservation> findByUserAndReservationDateBeforeOrReservationDateEqualsAndReservationTimeBefore(
-			User user, LocalDate dateBefore, LocalDate dateEquals, LocalTime time, Pageable pageable);
+	public Page<Reservation> findByUserAndReservationDateBeforeOrReservationDateEqualsAndReservationTimeBefore(User user, LocalDate dateBefore, LocalDate dateEquals, LocalTime time, Pageable pageable);
+	
+	long count();
 
 }
