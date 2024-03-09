@@ -27,7 +27,7 @@
                                      
                                  </ol>
                              </nav> 
-                             <h1 class="nagoyameshi_title" th:text="${shop.getName()+ '&nbsp;のレビュー投稿'}"></h1>
+                             <h1 class="text-center" th:text="${shop.getName()+ '&nbsp;のレビュー投稿'}"></h1>
                              <br>
                              <br>
                              <form method="post" th:action="@{/shop/__${shop.getId()}__/review/create}" th:object="${reviewForm}">

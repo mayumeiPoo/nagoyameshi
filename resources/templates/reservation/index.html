@@ -60,15 +60,15 @@
                                      <ul class="pagination">
                                          <li class="page-item">
                                              <span th:if="${currentReservationsPage.isFirst()}" class="page-link disabled">前</span>
-                                             <a th:unless="${currentReservationsPage.isFirst()}" th:href="@{/reservation(page = ${currentReservationsPage.getNumber() - 1}, tab=01)}" class="page-link nagoyameshi-page-link">前</a>
+                                             <a th:unless="${currentReservationsPage.isFirst()}" th:href="@{/reservation(page = ${currentReservationsPage.getNumber() - 1}, tab=01)}" class="page-link nagoyameshi-page-link1">前</a>
                                          </li>
                                          <li th:each="i : ${#numbers.sequence(0, currentReservationsPage.getTotalPages() - 1)}" class="page-item">
                                              <span th:if="${i == currentReservationsPage.getNumber()}" class="page-link active nagoyameshi-active" th:text="${i + 1}"></span>
-                                             <a th:unless="${i == currentReservationsPage.getNumber()}" th:href="@{/reservation(page = ${i}, tab=01)}" class="page-link nagoyameshi-page-link" th:text="${i + 1}"></a>
+                                             <a th:unless="${i == currentReservationsPage.getNumber()}" th:href="@{/reservation(page = ${i}, tab=01)}" class="page-link nagoyameshi-page-link1" th:text="${i + 1}"></a>
                                          </li>
                                          <li class="page-item">                        
                                              <span th:if="${currentReservationsPage.isLast()}" class="page-link disabled">次</span>
-                                             <a th:unless="${currentReservationsPage.isLast()}" th:href="@{/reservation(page = ${currentReservationsPage.getNumber() + 1}, tab=01)}" class="page-link nagoyameshi-page-link">次</a>
+                                             <a th:unless="${currentReservationsPage.isLast()}" th:href="@{/reservation(page = ${currentReservationsPage.getNumber() + 1}, tab=01)}" class="page-link nagoyameshi-page-link1">次</a>
                                          </li>
                                      </ul>
                                  </nav> 
@@ -105,15 +105,15 @@
                                      <ul class="pagination">
                                          <li class="page-item">
                                              <span th:if="${pastReservationsPage.isFirst()}" class="page-link disabled">前</span>
-                                             <a th:unless="${pastReservationsPage.isFirst()}" th:href="@{/reservation(page = ${pastReservationsPage.getNumber() - 1},tab=02)}" class="page-link nagoyameshi-page-link">前</a>
+                                             <a th:unless="${pastReservationsPage.isFirst()}" th:href="@{/reservation(page = ${pastReservationsPage.getNumber() - 1},tab=02)}" class="page-link nagoyameshi-page-link2">前</a>
                                          </li>
                                          <li th:each="i : ${#numbers.sequence(0, pastReservationsPage.getTotalPages() - 1)}" class="page-item">
                                              <span th:if="${i == pastReservationsPage.getNumber()}" class="page-link active nagoyameshi-active" th:text="${i + 1}"></span>
-                                             <a th:unless="${i == pastReservationsPage.getNumber()}" th:href="@{/reservation(page = ${i},tab=02)}" class="page-link nagoyameshi-page-link" th:text="${i + 1}"></a>
+                                             <a th:unless="${i == pastReservationsPage.getNumber()}" th:href="@{/reservation(page = ${i},tab=02)}" class="page-link nagoyameshi-page-link2" th:text="${i + 1}"></a>
                                          </li>
                                          <li class="page-item">                        
                                              <span th:if="${pastReservationsPage.isLast()}" class="page-link disabled">次</span>
-                                             <a th:unless="${pastReservationsPage.isLast()}" th:href="@{/reservation(page = ${pastReservationsPage.getNumber() + 1},tab=02)}" class="page-link nagoyameshi-page-link">次</a>
+                                             <a th:unless="${pastReservationsPage.isLast()}" th:href="@{/reservation(page = ${pastReservationsPage.getNumber() + 1},tab=02)}" class="page-link nagoyameshi-page-link2">次</a>
                                          </li>
                                      </ul>
                                  </nav> 

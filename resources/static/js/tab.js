@@ -1,47 +1,102 @@
-'use strict';
-
-{
-
 const tabMenus = document.querySelectorAll('.tab__menu-item');
-console.log(tabMenus);
+const tabStorageKey = 'activeTab';
 
 tabMenus.forEach((tabMenu) => {
-  tabMenu.addEventListener('click', tabSwitch);
-})
+    tabMenu.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabTargetData = e.currentTarget.dataset.tab;
+        tabSwitch(e, tabTargetData);
+        localStorage.setItem(tabStorageKey, tabTargetData);
+    });
+});
 
+document.addEventListener('DOMContentLoaded', () => {
+    const storedTab = localStorage.getItem(tabStorageKey);
+    
+    
+const defaultTab = storedTab || '01';
+    const defaultTabMenu = document.querySelector(`.tab__menu-item[data-tab="${defaultTab}"]`);
 
-function tabSwitch(e) {
-
-  // クリックされた要素のデータ属性を取得
-  const tabTargetData = e.currentTarget.dataset.tab;
-  // クリックされた要素の親要素と、その子要素を取得
-  const tabList = e.currentTarget.closest('.tab__menu');
-  console.log(tabList);
-  const tabItems = tabList.querySelectorAll('.tab__menu-item');
-  console.log(tabItems);
-  // クリックされた要素の親要素の兄弟要素の子要素を取得
-  const tabPanelItems = tabList.
-  nextElementSibling.querySelectorAll('.tab__panel-box');
-  console.log(tabPanelItems);
-
-  // クリックされたtabの同階層のmenuとpanelのクラスを削除
-  tabItems.forEach((tabItem) => {
-    tabItem.classList.remove('is-active');
-  })
-  tabPanelItems.forEach((tabPanelItem) => {
-    tabPanelItem.classList.remove('is-show');
-  })
-
-  // クリックされたmenu要素にis-activeクラスを付加
-  e.currentTarget.classList.add('is-active');
-  // クリックしたmenuのデータ属性と等しい値を持つパネルにis-showクラスを付加
-  tabPanelItems.forEach((tabPanelItem) => {
-    if (tabPanelItem.dataset.panel ===  tabTargetData) {
-      tabPanelItem.classList.add('is-show');
+    if (defaultTabMenu) {
+        defaultTabMenu.click();
     }
-  })
+});
 
+
+    
+function tabSwitch(e, tabTargetData) {
+    const tabList = e.currentTarget.closest('.tab__menu');
+    const tabItems = tabList.querySelectorAll('.tab__menu-item');
+    const tabPanelItems = tabList.nextElementSibling.querySelectorAll('.tab__panel-box');
+
+    tabItems.forEach((tabItem) => {
+        tabItem.classList.remove('is-active');
+    });
+    tabPanelItems.forEach((tabPanelItem) => {
+        tabPanelItem.classList.remove('is-show');
+    });
+
+    e.currentTarget.classList.add('is-active');
+    tabPanelItems.forEach((tabPanelItem) => {
+        if (tabPanelItem.dataset.panel === tabTargetData) {
+            tabPanelItem.classList.add('is-show');
+        
+            
+         
+localStorage.setItem(tabStorageKey, tabTargetData);
+            
+            
+ 
+updatePaginationLinks(tabPanelItem, tabTargetData);
+        }
+    });
 }
 
 
+function updatePaginationLinks(activeTabPanel, activeTab) {
+    
+let paginationLinks;
+
+    
+
+    
+if (activeTab === '01') {
+        paginationLinks =Array.from(activeTabPanel.querySelectorAll('.nagoyameshi-page-link1'));
+    } else if (activeTab === '02') {
+        paginationLinks = Array.from(activeTabPanel.querySelectorAll('.nagoyameshi-page-link2'));
+    } 
+   
+else {
+        return;
+    }
+
+    paginationLinks.forEach((link, index) => {
+        
+      
+const page = index + 1;
+
+        
+
+        
+
+        
+    
+const storedTab = localStorage.getItem(tabStorageKey);
+        
+        
+        
+
+        const shouldDisplay = storedTab === activeTab && page <= totalPages; 
+
+        if (shouldDisplay) {
+            link.href = `/reservation?page=${page}&tab=${activeTab}`;
+            
+     
+console.log(`Updated link${activeTab} ${index + 1}: ${link.href}`);
+        } 
+ 
+else {
+            link.removeAttribute('href');
+        }
+    });
 }

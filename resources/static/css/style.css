@@ -71,11 +71,11 @@ p {
 	 
  }
  
-.nagoyameshi-page-link{
+.nagoyameshi-page-link,.nagoyameshi-page-link1,.nagoyameshi-page-link2{
 	 color: #94736c ;
 }
 
-.nagoyameshi-page-link:hover{
+.nagoyameshi-page-link:hover,.nagoyameshi-page-link1:hover,.nagoyameshi-page-link2:hover{
 	color: #94736c ;
 	}
 .nagoyameshi-active {
@@ -144,10 +144,7 @@ p {
 	 width: 150px;
  }
  
- .nagoyameshi_title{
-	 position: relative;
-	 left: 250px;
- }
+ 
  
  .nagoyameshi-activ{
 	 background-color:#94736c !important;
@@ -264,6 +261,28 @@ p {
   display: block;
 }
 
+.total-count {
+	font-size: 30px;
+}
+
+.total-count2 {
+	font-size: 45px;
+	color:#b92125 ;
+}
+h4{
+	font-size: 30px;
+	color: #77787b;
+}
+.total1{
+	position: relative;
+	left: 85px;
+}
+
+.total2 {
+	position: relative;
+	left: 585px;
+	bottom: 395px;
+}
  @media screen and (min-width: 1400ox){
 	.nagoyameshi-container{
 		max-width: 1200px;
