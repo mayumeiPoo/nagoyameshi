@@ -17,6 +17,7 @@ INSERT IGNORE INTO user (id, name, furigana, postal_code, address, phone_number,
 INSERT IGNORE INTO user (id, name, furigana, postal_code, address, phone_number, birthmonth, birthday, gender, email, password, role_id, enabled) VALUES (9, '侍 章緒', 'サムライ アキオ', '111-1111', '東京都千代田区神田練塀町300番地', '090-1234-5678', '04', '12', '男性', 'akio.samurai@example.com', 'password', 1, false );
 INSERT IGNORE INTO user (id, name, furigana, postal_code, address, phone_number, birthmonth, birthday, gender, email, password, role_id, enabled) VALUES (10, '侍 祐子', 'サムライ ユウコ', '111-1111', '東京都千代田区神田練塀町300番地', '090-1234-5678', '08', '19', '女性', 'yuko.samurai@example.com', 'password', 1, false );
 INSERT IGNORE INTO user (id, name, furigana, postal_code, address, phone_number, birthmonth, birthday, gender, email, password, role_id, enabled) VALUES (11, '侍 秋美', 'サムライ アキミ', '111-1111', '東京都千代田区神田練塀町300番地', '090-1234-5678', '08', '19', '女性', 'akimi.samurai@example.com', 'password', 1, false );
+INSERT IGNORE INTO user (id, name, furigana, postal_code, address, phone_number, birthmonth, birthday, gender, email, password, role_id, enabled) VALUES (12, '侍 美香', 'サムライ ミカ', '111-1111', '東京都千代田区神田練塀町300番地', '090-1234-5678', '09', '19', '女性', 'mika.samurai@example.com', '$2a$10$2JNjTwZBwo7fprL2X4sv.OEKqxnVtsVQvuXDkI8xVGix.U3W5B7CO', 3, true );
 
 
 --categoryテーブル
